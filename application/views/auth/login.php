@@ -1,5 +1,5 @@
   <!-- <div class="jumbotron big-banner" style="height:500px; padding-top: 150px;"> -->
-  
+
   <div class="container">
 
     <!-- Outer Row -->
@@ -23,19 +23,19 @@
                   </div>
 
                     <?= $this->session->flashdata('message')?>
-                  
+
                   <form class="user" method="post" action="<?= base_url('auth/index'); ?>">
-                    
+
                     <!-- input email -->
                     <div class="form-group">
                       <input type="text" class="form-control form-control-user font-weight-bold" id="email" name="email" placeholder="Email" value="<?= set_value('email');?>">
-                      <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?> 
+                      <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
                     <!-- input password -->
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user font-weight-bold" id="password" name="password" placeholder="Password">
-                      <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?> 
+                      <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
                     <button type="submit" class="btn btn-success btn-user btn-block font-weight-bold">
@@ -61,5 +61,3 @@
 
   </div>
 <!-- </div> -->
-
-  
