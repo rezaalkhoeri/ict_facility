@@ -17,7 +17,7 @@ class Users extends CI_Controller
     
     public function index()
     {
-        $data['get'] = $this->m_data->tampil_data('user')->result();
+        $data['get'] = $this->m_data->tampil_data('tb_user')->result();
         $data['title'] = 'Asset Management | User Management';
         $this->load->view('templates/index_sidebar2', $data); 
         $this->load->view('users', $data);
