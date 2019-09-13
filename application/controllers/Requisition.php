@@ -13,7 +13,7 @@ class Requisition extends CI_Controller{
     }
 
     function index(){
-        $data['get'] = $this->m_data->tampil_data('requisition')->result();
+        $data['get'] = $this->m_data->tampil_data('tb_tr_requisition')->result();
         // var_dump($data) ;
         
         $title['title'] = 'Requisition Form';
