@@ -18,7 +18,7 @@
         });
       });
     });
-    
+
     $(document).ready(function() {
         var text_max = 15;
         // $('#ticket_feedback').html(text_max + ' characters remaining');
@@ -30,18 +30,18 @@
             // $('#ticket_feedback').html(text_remaining + ' characters remaining');
         });
     });
-    
+
     //tambah row
   $('#btntambah').click(function() {
     AddRow('1');
       });
-  
-    function AddRow(idx) 
+
+    function AddRow(idx)
     {
      var newRow = '<tr id="row_' + idx + '" class="datarow">'
     + '<th class="fixed-side" scope="col"><textarea id="txtDesc_' + idx + '" data-item="description" class="form-control" rows="3">' + type + '</textarea></th>'
     + '<td style="vertical-align: middle"><input type="number"  min="1" class="form-control" onchange="CalcTotalandDiff(this)" data-item="qty" onkeyup="CalcTotalandDiff(this)" value="' + serialnumber + '" style="text-align: right" id="txtQty_' + idx + '" /></td>'
-    
+
         newRow += '</tr>';
         row++;
         $("#tblData1 tbody").append(newRow);

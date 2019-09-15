@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php 
-$this->load->view('partial/head'); 
+<?php
+$this->load->view('partial/head');
 ?>
 
 <body id="page-top">
@@ -10,7 +10,7 @@ $this->load->view('partial/head');
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <?php 
+    <?php
         $this->load->view('partial/sidebar');
     ?>
 
@@ -20,7 +20,7 @@ $this->load->view('partial/head');
       <!-- Main Content -->
       <div id="content">
 
-        <?php 
+        <?php
           $this->load->view('partial/topbar');
         ?>
 
@@ -29,7 +29,7 @@ $this->load->view('partial/head');
 
               <!-- Page Heading -->
               <h1 class="h3 mb-4 text-gray-800 font-weight-bold">Add Item (Admin)</h1>
-              
+
               <!-- input -->
               <form action="<?= base_url('Item/tambah_aksi');?>" method="post" name="my_form">
 
@@ -50,10 +50,10 @@ $this->load->view('partial/head');
               <label for="stock">Stock</label>
               <input type="text" class="form-control" id="stock" name="stock" required>
               </div>
-      
+
             <!-- button add-->
               <!-- <a href="#" role="button"> -->
-              <button type="add" value="input" class="btn btn-primary"> 
+              <button type="add" value="input" class="btn btn-primary">
               Add
               </button>
             </form>
@@ -72,7 +72,7 @@ $this->load->view('partial/head');
                     </tr>
                   </thead>
                   <tbody id="posTable" >
-                  <?php 
+                  <?php
                   foreach ($get as $a) {
                     # code...
                     ?>
@@ -86,7 +86,7 @@ $this->load->view('partial/head');
                         <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a>
                     </td>
                     </tr>
-                  <?php } 
+                  <?php }
                   ?>
                   </tbody>
                 </table>
@@ -97,10 +97,8 @@ $this->load->view('partial/head');
       </div>
       <!-- End of Main Content -->
 
-      <?php 
+      <?php
           $this->load->view('partial/script');
         ?>
 
     <?php $this->load->view('partial/footer'); ?>
-
-

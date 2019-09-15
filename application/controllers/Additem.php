@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Additem extends CI_Controller 
+class Additem extends CI_Controller
 {
 
     public function __construct()
@@ -13,7 +13,7 @@ class Additem extends CI_Controller
             redirect('auth');
         }
     }
-    
+
     public function index()
     {
         $data['get'] = $this->m_data->join_table()->result();
@@ -24,7 +24,7 @@ class Additem extends CI_Controller
         $data['title'] = 'Asset Management | Add Item';
         $this->load->view('Additem/additem', $data);
     }
-    
+
     public function tambah()
     {
         $this->load->view('additem');
