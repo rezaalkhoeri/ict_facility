@@ -129,74 +129,14 @@ mysqli_connect("localhost", "root", "", "ictfacility");
       <!-- </a> -->
 
       <!-- button next-->
-        <a href="<?= base_url('user/procurement')?>" role="button">
-        <button type="button" value="" class="btn btn-success"> 
-        Next
+        <a href="<?= base_url('Requisition/index')?>" role="button">
+        <button type="button" value="" class="btn btn-danger"> 
+        Cancel
       </button>
       </a>
 </form>
       
       <hr>
-      <input class="form-control" id="posSearch" type="text" placeholder="Search here...">
-      <br>
-      <div class="panel-body">
-			<table id="tblData1" class="table table-bordered">
-    		<thead class="thead-dark">
-          <tr>
-            <th scope="col">Ticket</th>
-            <th scope="col">Item</th>
-            <th scope="col">Cost Center</th>
-            <th scope="col">Requestor</th>                         
-            <th scope="col">Date</th>
-            <th scope="col">Status</th>
-            <th scope="col">Description</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Action</th>
-
-          </tr>
-        </thead>
-        <tbody id="posTable" >
-        <?php 
-        foreach ($get as $a) {
-          # code...
-          ?>
-
-          <tr>
-          <td scope="col"><?= $a->ticket?></td>
-          <td scope="col"><?= $a->item?></td>
-          <td scope="col"><?= $a->cost_center?></td>
-          <td scope="col"><?= $a->requestor?></td>                         
-          <td scope="col"><?= $a->date?></td>
-          <td scope="col"><?= $a->status?></td>
-          <td scope="col"><?= $a->description?></td>
-          <td scope="col"><?= $a->quantity?></td>
-          
-          <?php 
-          if ($this->session->userdata('role_id') == 3) {   
-            ?>          
-          <td scope="col">
-              <a href="edit/<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span></a>
-              <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a>
-              <a href="#"><span class="badge badge-success">Approve</span></a>
-          </td>
-          <?php
-        } else {
-          ?>
-          <td scope="col">
-              <a href="edit/<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span></a>
-              <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a>
-              
-          </td>
-          <?php
-        } ?>
-          </tr>
-
-        <?php } 
-        ?>
-
-        </tbody>
-      </table>
-      </div>
       </div>
         <!-- /.container-fluid -->
 

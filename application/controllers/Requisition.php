@@ -13,17 +13,21 @@ class Requisition extends CI_Controller{
     }
 
     function index(){
-        $data['get'] = $this->m_data->tampil_data('tb_tr_requisition')->result();
+        $data['get'] = $this->m_data->join_table_requisition()->result();
         // var_dump($data) ;
-        
+        // die;
+
         $title['title'] = 'Requisition Form';
-        $this->load->view('templates/index_sidebar', $title);
-        $this->load->view('requisition', $data);    
+        $this->load->view('templates/index_sidebar2', $title);
+        $this->load->view('Requisition/requisition', $data);    
         $this->load->view('templates/index_footer');
     }
-
-    function tambah(){
-        $this->load->view('requisition');
+    
+    function index_input(){
+        $title['title'] = 'Requisition Form';
+        $this->load->view('templates/index_sidebar2', $title);
+        $this->load->view('Requisition/requisition_input');
+        $this->load->view('templates/index_footer');
     }
 
     function tambah_aksi(){
@@ -46,22 +50,27 @@ class Requisition extends CI_Controller{
             'description' => $description,
             'quantity' => $quantity
         );
-        $this->m_data->input_data($data, 'requisition');
+        $this->m_data->input_data($data, 'tb_tr_requisition');
         redirect('Requisition/index');
         
     }
 
     function hapus($id){
         $where = array('id' => $id);
-        $this->m_data->hapus_data($where,'requisition');
+        $this->m_data->hapus_data($where,'tb_tr_requisition');
         redirect('Requisition/index');
     }
 
-    function edit($id){
-        $where = array('id' => $id);
-        $data['requisition'] = $this->m_data->edit_data($where, 'requisition')->result();
-        // var_dump($data);
-        $this->load->view('requisition_edit', $data);
+    function edit(){
+        $title['title'] = 'Requisition Form';
+        $this->load->view('templates/index_sidebar2', $title);
+        $this->load->view('Requisition/requisition_edit');
+        $this->load->view('templates/index_footer');
+
+        // $where = array('id' => $id);
+        // $data['tb_tr_requisition'] = $this->m_data->edit_data($where, 'tb_tr_requisition')->result();
+        // // var_dump($data);
+        // $this->load->view('requisition_edit', $data);
     }
 
     function update($id){
@@ -86,7 +95,7 @@ class Requisition extends CI_Controller{
         );
 
         $where = array('id' => $id);
-        $this->m_data->update_data($where, $data, 'requisition');
+        $this->m_data->update_data($where, $data, 'tb_tr_requisition');
         redirect('Requisition/index');
         // var_dump($where);
     }

@@ -154,10 +154,10 @@
       </button>
       </a>
 
-      <!-- button next-->
-        <a href="<?= base_url('user/distribution')?>" role="button">
+      <!-- button cancel-->
+        <a href="<?= base_url('Procurement/index')?>" role="button">
         <button type="button" value="submit" class="btn btn-success"> 
-        Next
+        Cancel
       </button>
       </a>
 
@@ -165,49 +165,7 @@
       </form>
 
       <hr>
-      <input class="form-control" id="posSearch" type="text" placeholder="Search here...">
-      <br>
-      <div class="panel-body">
-			<table id="tblData1" class="table table-bordered">
-    		<thead class="thead-dark">
-          <tr>
-            <th scope="col">Ticket</th>
-            <th scope="col">Item</th>
-            <th scope="col">Cost Center</th>
-            <th scope="col">Requestor</th>                         
-            <th scope="col">Serial Number</th>
-            <th scope="col">Value Price</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Description</th>
-            <th scope="col">Payment Method</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-        <tbody id="posTable" >
-        <?php 
-        foreach ($get as $a) {
-          # code...
-          ?>
-
-          <tr>
-          <td scope="col"><?= $a->ticket?></td>
-          <td scope="col"><?= $a->item?></td>
-          <td scope="col"><?= $a->cost_center?></td>
-          <td scope="col"><?= $a->requestor?></td>                         
-          <td scope="col"><?= $a->serialnumber?></td>
-          <td scope="col"><?= $a->valueprice?></td>
-          <td scope="col"><?= $a->quantity?></td>
-          <td scope="col"><?= $a->description?></td>
-          <td scope="col"><?= $a->paymentmethod?></td>
-          <td scope="col"><?= $a->status?></td>
-          </tr>
-
-        <?php } 
-        ?>
-
-        </tbody>
-      </table>
-      </div>
+      
       </div>
         <!-- /.container-fluid -->
 
