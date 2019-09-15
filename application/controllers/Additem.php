@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Additem extends CI_Controller 
+class Additem extends CI_Controller
 {
 
     public function __construct()
@@ -13,7 +13,7 @@ class Additem extends CI_Controller
             redirect('auth');
         }
     }
-    
+
     public function index()
     {
         $data['get'] = $this->m_data->join_table()->result();
@@ -24,7 +24,7 @@ class Additem extends CI_Controller
         $data['title'] = 'Asset Management | Add Item';
         $this->load->view('Additem/additem', $data);
     }
-    
+
     public function tambah()
     {
         $this->load->view('additem');
@@ -38,14 +38,23 @@ class Additem extends CI_Controller
         $valueprice = $this->input->post('valueprice');
         $condition = $this->input->post('condition');
 
-        $data = array(
-            'id_item' => $jenis,
-            'serial_number' => $serialnumber,
-            'asset_number' => $assetnumber,
-            'value_price' => $valueprice,
-            'condition' => $condition
-        );
-        $this->m_data->input_data($data, 'tb_detail_item');
+        $data = array();
+
+        for ($i=0; $i < count($serialnumber); $i++) {
+          array_push($data, array(
+              'id_item' => $jenis[$i],
+              'serial_number' => $serialnumber[$i],
+              'asset_number' => $assetnumber[$i],
+              'value_price' => $valueprice[$i],
+              'condition' => $condition[$i]
+          ));
+
+        }
+
+        // echo '<pre>',print_r($data),'</pre>';
+        // die;
+
+        $this->m_data->multiple_insert($data, 'tb_detail_item');
         redirect('Additem/index');
 
     }

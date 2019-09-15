@@ -8,14 +8,14 @@ class M_data extends CI_Model{
     function tampil_data_item($table, $column){
         $this->db->order_by($column,'ASC');
         $query = $this->db->get($table);
-        return $query;        
+        return $query;
     }
 
     function join_table(){ //item
         // $query = $this->db->select('*')->from($table1)->join($table2, $condition1.'='.$condition2)->get();
         $sql = "SELECT D.*, I.jenis, I.merek FROM tb_detail_item D JOIN tb_item I ON D.id_item = I.id";
         $query = $this->db->query($sql);
-        return $query;        
+        return $query;
     }
 
     function join_table_requisition(){
@@ -69,6 +69,11 @@ class M_data extends CI_Model{
 
     function input_data($data, $table){
         $this->db->insert($table, $data);
+    }
+
+    public function multiple_insert($data, $table)
+    {
+      $this->db->insert_batch($table, $data);
     }
 
     function edit_data($where, $table){
