@@ -19,9 +19,7 @@ class Users extends CI_Controller
     {
         $data['get'] = $this->m_data->tampil_data('tb_user')->result();
         $data['title'] = 'Asset Management | User Management';
-        $this->load->view('templates/index_sidebar2', $data);
-        $this->load->view('users', $data);
-        $this->load->view('templates/index_footer');
+        $this->load->view('users/users_data', $data);
     }
 
     public function tampil()

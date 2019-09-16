@@ -14,20 +14,13 @@ class Requisition extends CI_Controller{
 
     function index(){
         $data['get'] = $this->m_data->join_table_requisition()->result();
-        // var_dump($data) ;
-        // die;
-
-        $title['title'] = 'Requisition Form';
-        $this->load->view('templates/index_sidebar2', $title);
-        $this->load->view('Requisition/requisition', $data);    
-        $this->load->view('templates/index_footer');
+        $data['title'] = 'Asset Management | Requisition';
+        $this->load->view('Requisition/requisition', $data);
     }
-    
+
     function index_input(){
         $title['title'] = 'Requisition Form';
-        $this->load->view('templates/index_sidebar2', $title);
-        $this->load->view('Requisition/requisition_input');
-        $this->load->view('templates/index_footer');
+        $this->load->view('Requisition/requisition_input', $title);
     }
 
     function tambah_aksi(){
@@ -52,7 +45,7 @@ class Requisition extends CI_Controller{
         );
         $this->m_data->input_data($data, 'tb_tr_requisition');
         redirect('Requisition/index');
-        
+
     }
 
     function hapus($id){
@@ -82,7 +75,7 @@ class Requisition extends CI_Controller{
         $status = $this->input->post('status');
         $description = $this->input->post('description');
         $quantity = $this->input->post('quantity');
-        
+
         $data = array(
             'ticket' => $ticket,
             'item' => $item,
