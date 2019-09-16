@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Additem extends CI_Controller
+class ItemDetail extends CI_Controller
 {
 
     public function __construct()
@@ -21,13 +21,13 @@ class Additem extends CI_Controller
         // print_r($data);
 
         $data['type'] = $this->m_data->tampil_data_item('tb_item','jenis')->result();
-        $data['title'] = 'Asset Management | Add Item';
-        $this->load->view('Additem/additem', $data);
+        $data['title'] = 'Asset Management | Item Details';
+        $this->load->view('itemDetail/itemDetail', $data);
     }
 
     public function tambah()
     {
-        $this->load->view('additem');
+        $this->load->view('itemDetail');
     }
 
     public function tambah_aksi()
@@ -51,11 +51,29 @@ class Additem extends CI_Controller
 
         }
 
-        // echo '<pre>',print_r($data),'</pre>';
+        // $value = array();
+
+        // $value = array(
+        //   'id_item' => $jenis,
+        // );
+        //
+        // // print_r(count($value['id_item']));
+        // // die;
+        //
+        // $result = array();
+        // for ($c=0; $c < count($value['id_item']); $c++) {
+        //   $result = $value['id_item'][$c];
+        // }
+        // // $result = array();
+        //
+        //
+        // echo '<pre>',print_r($result),'</pre>';
         // die;
+        // print_r(array_count_values($value['id_item']));
+        // echo '<pre>',print_r(array_count_values($value['id_item'])),'</pre>';
 
         $this->m_data->multiple_insert($data, 'tb_detail_item');
-        redirect('Additem/index');
+        redirect('itemDetail/index');
 
     }
 
@@ -82,12 +100,12 @@ class Additem extends CI_Controller
         // print_r($id);
 
         $this->m_data->update_data($where, $data,'tb_detail_item');
-        redirect('Additem/index');
+        redirect('itemDetail/index');
     }
 
     // public function hapus($id){
     //     $where = array('id' => $id);
     //     $this->m_data->hapus_data($where,'tb_item');
-    //     redirect('Additem/index');
+    //     redirect('itemDetail/index');
     // }
 }

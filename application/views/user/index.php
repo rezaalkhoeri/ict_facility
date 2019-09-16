@@ -1,5 +1,5 @@
 <?php $title='User'?>
-    
+
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -23,7 +23,7 @@
                 <img class="img-responsive animated--grow-in" width="240px" height="70px" src="<?= base_url('assets/img/pdsibaru.jpg');?>">
                 </div>
               </a>
-              
+
             </li>
 
           </ul>
@@ -43,14 +43,14 @@
       </div>
       <!-- End of Main Content -->
 
-     
+
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
 
-  
+
   <!-- Bootstrap core JavaScript-->
   <script src="<?= base_url('assets'); ?>/vendor/jquery/jquery.min.js"></script>
   <script src="<?= base_url('assets'); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
