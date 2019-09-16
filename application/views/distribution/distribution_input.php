@@ -141,59 +141,16 @@
       </button>
       </a>
 
-      <!-- button next-->
-        <a href="<?= base_url('user/facilities')?>" role="button">
-        <button type="button" value="submit" class="btn btn-success"> 
-        Next
+      <!-- button cancel-->
+        <a href="<?= base_url('Distribution/index')?>" role="button">
+        <button type="button" value="submit" class="btn btn-danger"> 
+        Cancel
       </button>
       </a>
       </form>
 
       <hr>
-      <input class="form-control" id="posSearch" type="text" placeholder="Search here...">
-      <br>
-      <!-- table -->
-      <div class="panel-body">
-			<table id="tblData1" class="table table-bordered">
-    		<thead class="thead-dark">
-          <tr>
-            <th scope="col">Ticket</th>
-            <th scope="col">Receipt Number</th>
-            <th scope="col">Asset Number</th>
-            <th scope="col">Item</th>
-            <th scope="col">Date</th>
-            <th scope="col">Location</th>                         
-            <th scope="col">Status</th>
-            <th scope="col">Description</th>
-            <th scope="col">Giver</th>
-            <th scope="col">Recepient</th>
-            <th scope="col">Upload Receipt Doc</th>
-          </tr>
-        </thead>
-        <tbody id="posTable">
-        <?php 
-        foreach ($get as $a) {
-          # code...
-          ?>
-
-          <tr>
-          <td scope="col"><?= $a->ticket?></td>
-          <td scope="col"><?= $a->receiptnumber?></td>
-          <td scope="col"><?= $a->assetnumber?></td>
-          <td scope="col"><?= $a->item?></td>
-          <td scope="col"><?= $a->date?></td>
-          <td scope="col"><?= $a->location?></td>
-          <td scope="col"><?= $a->status?></td>
-          <td scope="col"><?= $a->description?></td>
-          <td scope="col"><?= $a->uploadreceiptdoc?></td>
-          </tr>
-
-        <?php } 
-        ?>
-
-        </tbody>
-      </table>
-      </div>
+      
       </div>
         <!-- /.container-fluid -->
 

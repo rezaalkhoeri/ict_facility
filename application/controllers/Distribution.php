@@ -13,17 +13,27 @@ class Distribution extends CI_Controller{
     }
 
     function index(){
-        $data['get'] = $this->m_data->tampil_data('distribution')->result();
+        $data['get'] = $this->m_data->join_table_distribution()->result();
         // var_dump($data) ;
 
         $title['title'] = 'Distribution Form';
-        $this->load->view('templates/index_sidebar', $title);
-        $this->load->view('distribution', $data);
+        $this->load->view('templates/index_sidebar2', $title);
+        $this->load->view('Distribution/distribution', $data);
         $this->load->view('templates/index_footer');
     }
 
-    function tambah(){
-        $this->load->view('distribution');
+    function index_input(){
+        $title['title'] = 'Distribution Form';
+        $this->load->view('templates/index_sidebar2', $title);
+        $this->load->view('Distribution/distribution_input');
+        $this->load->view('templates/index_footer');
+    }
+    
+    function details(){
+        $title['title'] = 'Distribution Form';
+        $this->load->view('templates/index_sidebar2', $title);
+        $this->load->view('Distribution/distribution_details');
+        $this->load->view('templates/index_footer');
     }
 
     function tambah_aksi(){
