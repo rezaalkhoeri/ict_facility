@@ -8,6 +8,12 @@
   <!-- Custom scripts for all pages-->
   <script src="<?= base_url('assets'); ?>/js/sb-admin-2.min.js"></script>
 
+  <!-- Page level plugins -->
+  <script src="<?= base_url('assets'); ?>/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url('assets'); ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<?= base_url('assets'); ?>/js/demo/datatables-demo.js"></script>
 
 <script>
     $(document).ready(function(){
@@ -31,26 +37,42 @@
         });
     });
 
-    //tambah row
-  $('#btntambah').click(function() {
-    AddRow('1');
-      });
+  </script>
 
-    function AddRow(idx)
-    {
-     var newRow = '<tr id="row_' + idx + '" class="datarow">'
-    + '<th class="fixed-side" scope="col"><textarea id="txtDesc_' + idx + '" data-item="description" class="form-control" rows="3">' + type + '</textarea></th>'
-    + '<td style="vertical-align: middle"><input type="number"  min="1" class="form-control" onchange="CalcTotalandDiff(this)" data-item="qty" onkeyup="CalcTotalandDiff(this)" value="' + serialnumber + '" style="text-align: right" id="txtQty_' + idx + '" /></td>'
+  <script>
 
-        newRow += '</tr>';
-        row++;
-        $("#tblData1 tbody").append(newRow);
-        //return $('#tblUMKDetail tr:last');
-    }
-    </script>
 
-    <!-- jQuery
-    <script src="<?= base_url('assets'); ?>/vendor/datatables2/jquery/dist/jquery.min.js"></script>
-    <script src="<?= base_url('assets'); ?>/vendor/datatables2/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url('assets'); ?>/vendor/datatables2/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="<?= base_url('assets'); ?>/vendor/datatables2/datatables.net-buttons/js/dataTables.buttons.min.js"></script> --> -->
+      function myFunction() {
+
+        var getData = [
+          <?php foreach ($type as $t) { ?>
+            ["<?php echo '<option value='.$t->id.'>'. $t->jenis.' | '.$t->merek.'</option>'; ?>"],
+          <?php } ?>
+        ];
+
+        var tr_s = "<tr id='row'>";
+        // var tr_btn_s = "<tr class='button-row'>";
+        var tr_e = "</tr>";
+        var type = "<td scope='col' width='200px'><div class='form-group'><select class='form-control' name='type[]' id='type'>" + getData + " </option></select></div></td>";
+        var serialnumber = "<td scope='col'><div class='form-group'><input type='text' class='form-control' id='serialnumber' name='serialnumber[]' required></div></td>";
+        var assetnumber = "<td scope='col'><div class='form-group'><input type='text' class='form-control' id='serialnumber' name='assetnumber[]' required></div></td>";
+        var valueprice = "<td scope='col'><div class='form-group'><input type='text' class='form-control' id='serialnumber' name='valueprice[]' required></div></td>";
+        var condition = "<td scope='col'><div class='form-group'><textarea class='form-control' name='condition[]' id='condition'></textarea></div></td>"
+        var action = "<td scope='col'><button onclick='removeRow()' type='button'  class='btn-delete btn btn-danger'><i class='fa fa-times'></i></button></td>"
+
+
+        // ///removes row with add button///
+        // $(".button-row").remove();
+        ///adds row with inputs and last row with add button///
+        $(".row-body").append(tr_s + type + serialnumber + assetnumber + valueprice + condition + action + tr_e );
+        ///enables focus highlight on new rows///
+        // inputhighlight();
+        };
+        //--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/
+
+        // Remove criterion
+        function removeRow() {
+          $("#row").remove();
+        }
+
+      </script>

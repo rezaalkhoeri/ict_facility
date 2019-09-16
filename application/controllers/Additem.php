@@ -38,14 +38,23 @@ class Additem extends CI_Controller
         $valueprice = $this->input->post('valueprice');
         $condition = $this->input->post('condition');
 
-        $data = array(
-            'id_item' => $jenis,
-            'serial_number' => $serialnumber,
-            'asset_number' => $assetnumber,
-            'value_price' => $valueprice,
-            'condition' => $condition
-        );
-        $this->m_data->input_data($data, 'tb_detail_item');
+        $data = array();
+
+        for ($i=0; $i < count($serialnumber); $i++) {
+          array_push($data, array(
+              'id_item' => $jenis[$i],
+              'serial_number' => $serialnumber[$i],
+              'asset_number' => $assetnumber[$i],
+              'value_price' => $valueprice[$i],
+              'condition' => $condition[$i]
+          ));
+
+        }
+
+        // echo '<pre>',print_r($data),'</pre>';
+        // die;
+
+        $this->m_data->multiple_insert($data, 'tb_detail_item');
         redirect('Additem/index');
 
     }
