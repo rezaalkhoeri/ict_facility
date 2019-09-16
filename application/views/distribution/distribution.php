@@ -76,7 +76,7 @@
           <td scope="col"><?= $a->status?></td>
           <td scope="col"><?= $a->deskripsi?></td>
           <td scope="col">
-              <a href="<?= base_url('Distribution/details') ?>"><span class="badge badge-primary">Details</span></a>
+              <a href="<?= base_url('Distribution/details/'.$a->id) ?>"><span class="badge badge-primary">Details</span></a>
           </td>
           </tr>
 

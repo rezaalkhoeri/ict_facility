@@ -29,10 +29,12 @@ class Distribution extends CI_Controller{
         $this->load->view('templates/index_footer');
     }
     
-    function details(){
+    function details($id){
+        $data['get'] = $this->m_data->join_table_detail_distribution($id)->result();
+
         $title['title'] = 'Distribution Form';
         $this->load->view('templates/index_sidebar2', $title);
-        $this->load->view('Distribution/distribution_details');
+        $this->load->view('Distribution/distribution_details', $data);
         $this->load->view('templates/index_footer');
     }
 
