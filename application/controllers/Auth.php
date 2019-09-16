@@ -12,7 +12,7 @@ class Auth extends CI_Controller
     // function buat login
     public function index()
     {
-         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
 

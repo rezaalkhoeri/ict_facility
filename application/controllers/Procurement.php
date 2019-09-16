@@ -13,17 +13,31 @@ class Procurement extends CI_Controller{
     }
     
     function index(){
-        $data['get'] = $this->m_data->tampil_data('procurement')->result();
+        $data['get'] = $this->m_data->join_table_procurement()->result();
         // var_dump($data) ;
         
         $title['title'] = 'Procurement Form';
-        $this->load->view('templates/index_sidebar', $title);
-        $this->load->view('procurement', $data);
+        $this->load->view('templates/index_sidebar2', $title);
+        $this->load->view('Procurement/procurement', $data);
         $this->load->view('templates/index_footer');
     }
     
-    function tambah(){
-        $this->load->view('procurement');
+    function index_input(){
+        $title['title'] = 'Procurement Form';
+        $this->load->view('templates/index_sidebar2', $title);
+        $this->load->view('Procurement/procurement_input');
+        $this->load->view('templates/index_footer');
+    }
+
+    function details($id){
+        $data['get'] = $this->m_data->join_table_detail_procurement($id)->result();
+        // print_r($data);
+        // die;
+        
+        $title['title'] = 'Procurement Form';
+        $this->load->view('templates/index_sidebar2', $title);
+        $this->load->view('Procurement/procurement_details',$data);
+        $this->load->view('templates/index_footer');
     }
 
     function tambah_aksi(){
@@ -50,6 +64,7 @@ class Procurement extends CI_Controller{
             'paymentmethod' => $paymentmethod,
             'status' => $status
         );
+        
         $this->m_data->input_data($data, 'procurement');
         redirect('Procurement/index');
         

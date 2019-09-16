@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php 
-$this->load->view('partial/head'); 
+<?php
+$this->load->view('partial/head');
 ?>
 
 <body id="page-top">
@@ -10,7 +10,7 @@ $this->load->view('partial/head');
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <?php 
+    <?php
         $this->load->view('partial/sidebar');
     ?>
 
@@ -20,50 +20,24 @@ $this->load->view('partial/head');
       <!-- Main Content -->
       <div id="content">
 
-        <?php 
+        <?php
           $this->load->view('partial/topbar');
         ?>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-              <!-- Page Heading -->
-              <h1 class="h3 mb-4 text-gray-800 font-weight-bold">Add Item (Admin)</h1>
-              
-              <!-- input -->
-              <form action="<?= base_url('Item/tambah_aksi');?>" method="post" name="my_form">
-
-              <!-- type -->
-              <div id="ticket_feedback" class="form-group">
-              <label for="type">Type</label>
-              <input type="text" class="form-control" id="type" name="type" required>
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">List Item</h6>
               </div>
-
-              <!-- brand -->
-              <div class="form-group">
-              <label for="brand">Brand</label>
-              <input type="text" class="form-control" id="brand" name="brand" required>
-              </div>
-
-              <!-- stock -->
-              <div id="ticket_feedback" class="form-group">
-              <label for="stock">Stock</label>
-              <input type="text" class="form-control" id="stock" name="stock" required>
-              </div>
-      
-            <!-- button add-->
-              <!-- <a href="#" role="button"> -->
-              <button type="add" value="input" class="btn btn-primary"> 
-              Add
-              </button>
-            </form>
-
-            <hr>
-            <input class="form-control" id="posSearch" type="text" placeholder="Search here...">
-            <br>
-              <div class="panel-body">
-                <table id="tblData1" class="table table-bordered">
-                  <thead class="thead-dark">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <div class="form-group">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal">Add Item</button>
+                  </div>
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
                     <tr>
                       <th scope="col">Type</th>
                       <th scope="col">Brand</th>
@@ -72,7 +46,7 @@ $this->load->view('partial/head');
                     </tr>
                   </thead>
                   <tbody id="posTable" >
-                  <?php 
+                  <?php
                   foreach ($get as $a) {
                     # code...
                     ?>
@@ -80,27 +54,115 @@ $this->load->view('partial/head');
                     <tr>
                     <td scope="col"><?= $a->jenis?></td>
                     <td scope="col"><?= $a->merek?></td>
-                    <td scope="col"><?= $a->stok?></td>
+                    <td scope="col"><?= $a->stok?> Unit </td>
                     <td scope="col">
                         <a href="#" data-toggle="modal" data-target="#edit<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span></a>
-                        <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a>
+                        <!-- <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a> -->
                     </td>
                     </tr>
-                  <?php } 
+                  <?php }
                   ?>
                   </tbody>
                 </table>
               </div>
+            </div>
+          </div>
         </div>
           <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
 
-      <?php 
-          $this->load->view('partial/script');
-        ?>
+      <?php $this->load->view('partial/script'); ?>
+      <?php $this->load->view('partial/footer'); ?>
 
-    <?php $this->load->view('partial/footer'); ?>
+    <!-- Save Modal -->
+    <div id="largeModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Item Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <form action="<?= base_url('Item/tambah_aksi');?>" method="post" name="my_form">
+            <div class="modal-body">
+              <!-- Page Heading -->
+                <!-- input -->
+                  <!-- type -->
+                  <div id="ticket_feedback" class="form-group">
+                    <label for="type">Type</label>
+                    <input type="text" class="form-control" id="type" name="type" required>
+                  </div>
+                  <!-- brand -->
+                  <div class="form-group">
+                    <label for="brand">Brand</label>
+                    <input type="text" class="form-control" id="brand" name="brand" required>
+                  </div>
 
+                  <!-- stock -->
+                  <!-- <div id="ticket_feedback" class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="text" class="form-control" id="stock" name="stock" required>
+                  </div> -->
 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <!-- button add-->
+                <button type="add" value="input" class="btn btn-primary"> Save </button>
+            </div>
+          </form>
+        </div>
+    </div>
+    </div>
+
+    <!-- Edit Modal-->
+    <?php
+    foreach ($get as $d) { ?>
+    <div class="modal fade" id="edit<?php echo $d->id ?>">
+      <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Item Data</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+          <form action="<?= base_url('Item/update/'.$d->id);?>" method="post" name="my_form">
+          <div class="modal-body">
+                <!-- type -->
+                <div id="ticket_feedback" class="form-group">
+                  <label for="type">Type</label>
+                  <input value=<?php echo $d->jenis; ?> type="text" class="form-control" id="type" name="type" required>
+                </div>
+                <!-- brand -->
+                <div class="form-group">
+                  <label for="brand">Brand</label>
+                  <input value=<?php echo $d->merek; ?> type="text" class="form-control" id="brand" name="brand" required>
+                </div>
+
+                <!-- stock -->
+                <!-- <div id="ticket_feedback" class="form-group">
+                  <label for="stock">Stock</label>
+                  <input value=<?php echo $d->stok; ?> type="text" class="form-control" id="stock" name="stock" required>
+                </div> -->
+
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <!-- button add-->
+              <button type="add" value="input" class="btn btn-primary"> Save </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
+    <?php } ?>
+   <!-- End The Modal -->
+
+  </div>
+
+ </div>
+
+</body>
+</html>
