@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Users extends CI_Controller 
+class Users extends CI_Controller
 {
 
     public function __construct()
@@ -14,12 +14,12 @@ class Users extends CI_Controller
         }
 
     }
-    
+
     public function index()
     {
-        $data['get'] = $this->m_data->tampil_data('user')->result();
+        $data['get'] = $this->m_data->tampil_data('tb_user')->result();
         $data['title'] = 'Asset Management | User Management';
-        $this->load->view('templates/index_sidebar2', $data); 
+        $this->load->view('templates/index_sidebar2', $data);
         $this->load->view('users', $data);
         $this->load->view('templates/index_footer');
     }
@@ -30,8 +30,8 @@ class Users extends CI_Controller
             'name' => $name,
             'email' => $email
         );
-        $this->m_data->input_data($data, 'user');
+        $this->m_data->input_data($data, 'tb_user');
         redirect('Users/index');
     }
-    
+
 }
