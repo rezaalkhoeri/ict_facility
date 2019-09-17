@@ -11,6 +11,13 @@ class M_data extends CI_Model{
         return $query;
     }
 
+    function join_table_users(){
+        $sql="SELECT tb_user.*, tb_user_role.role
+        FROM tb_user JOIN tb_user_role ON tb_user.role_id = tb_user_role.id";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
     function join_table(){ //item
         // $query = $this->db->select('*')->from($table1)->join($table2, $condition1.'='.$condition2)->get();
         $sql = "SELECT D.*, I.jenis, I.merek FROM tb_detail_item D JOIN tb_item I ON D.id_item = I.id";

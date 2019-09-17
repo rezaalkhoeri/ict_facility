@@ -14,12 +14,8 @@ class Distribution extends CI_Controller{
 
     function index(){
         $data['get'] = $this->m_data->join_table_distribution()->result();
-        // var_dump($data) ;
-
-        $title['title'] = 'Distribution Form';
-        $this->load->view('templates/index_sidebar2', $title);
+        $data['title'] = 'Asset Management | Distribution';
         $this->load->view('Distribution/distribution', $data);
-        $this->load->view('templates/index_footer');
     }
 
     function index_input(){

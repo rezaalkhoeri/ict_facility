@@ -14,12 +14,8 @@ class Procurement extends CI_Controller{
     
     function index(){
         $data['get'] = $this->m_data->join_table_procurement()->result();
-        // var_dump($data) ;
-        
-        $title['title'] = 'Procurement Form';
-        $this->load->view('templates/index_sidebar2', $title);
+        $data['title'] = 'Asset Management | Procurement';
         $this->load->view('Procurement/procurement', $data);
-        $this->load->view('templates/index_footer');
     }
     
     function index_input(){
