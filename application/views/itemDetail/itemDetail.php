@@ -115,7 +115,7 @@ $this->load->view('partial/head');
                                   <th scope="col">Action</th>
                                 </tr>
                               </thead>
-                              <tbody id="posTable" class="row-body" >
+                              <tbody id="inputTable" class="row-body" >
                                 <tr id='row'>
                                 <td scope="col" width="200px">
                                     <!-- type -->
@@ -157,7 +157,7 @@ $this->load->view('partial/head');
                                     </div>
                                 </td>
                                 <td scope="col">
-                                  <button onclick='removeRow()' type="button"  class="btn-delete btn btn-danger">
+                                  <button onclick='deleteRow(this.parentNode.parentNode.rowIndex)' type="button"  class="btn-delete btn btn-danger">
                                   <i class="fa fa-times"></i>
                                   </button>
                                 </td>
@@ -253,7 +253,6 @@ $this->load->view('partial/head');
 
   <script>
 
-
       function myFunction() {
 
         var getData = [
@@ -270,21 +269,14 @@ $this->load->view('partial/head');
         var assetnumber = "<td scope='col'><div class='form-group'><input type='text' class='form-control' id='serialnumber' name='assetnumber[]' required></div></td>";
         var valueprice = "<td scope='col'><div class='form-group'><input type='text' class='form-control' id='serialnumber' name='valueprice[]' required></div></td>";
         var condition = "<td scope='col'><div class='form-group'><textarea class='form-control' name='condition[]' id='condition'></textarea></div></td>"
-        var action = "<td scope='col'><button onclick='removeRow()' type='button'  class='btn-delete btn btn-danger'><i class='fa fa-times'></i></button></td>"
+        var action = "<td scope='col'><button onclick='deleteRow(this.parentNode.parentNode.rowIndex)' type='button'  class='btn-delete btn btn-danger'><i class='fa fa-times'></i></button></td>"
 
-
-        // ///removes row with add button///
-        // $(".button-row").remove();
-        ///adds row with inputs and last row with add button///
         $(".row-body").append(tr_s + type + serialnumber + assetnumber + valueprice + condition + action + tr_e );
-        ///enables focus highlight on new rows///
-        // inputhighlight();
-        };
-        //--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/
 
-        // Remove criterion
-        function removeRow() {
-          $("#row").remove();
+        };
+
+        function deleteRow(i){
+            document.getElementById('inputTable').deleteRow(i)
         }
 
       </script>

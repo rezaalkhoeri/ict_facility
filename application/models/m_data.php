@@ -90,6 +90,12 @@ class M_data extends CI_Model{
         $this->db->update($table, $data);
     }
 
+    function multiple_update($table, $data, $where){
+        // $this->db->where($where);
+        $this->db->update_batch($table, $data, $where);
+    }
+
+
 }
 
 ?>
