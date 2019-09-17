@@ -1,16 +1,14 @@
   <div class="container">
 
-    <div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
-      <div class="card-body p-0">
+    
         <!-- Nested Row within Card Body -->
         <div class="row">
           <div class="col-lg">
             <div class="p-5">
               <div class="text-center">
               <img class="img-responsive animated--grow-in" width="240px" height="70px" src="<?= base_url('assets/img/pdsibaru.jpg');?>">
-                <h1 class="h4 text-gray-900 mb-4 font-weight-bold">Create an Account!</h1>
               </div>
-              <form class="user" method="POST" action="<?= base_url('auth/registration'); ?>">
+              <form class="user" method="POST" action="<?= base_url('users/registration'); ?>">
 
                 <!-- name -->
                 <div class="form-group">
@@ -22,8 +20,18 @@
                 <!-- email -->
                 <div class="form-group">
                   <input type=text class="form-control form-control-user font-weight-bold" 
-                  id="e mail" name="email" placeholder="Email Address" value="<?= set_value('email');?>">
+                  id="email" name="email" placeholder="Email Address" value="<?= set_value('email');?>">
                   <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+
+                <!-- role -->
+                <div class="form-group">
+                <select class="form-control" name="roleid" id="roleid">
+                  <?php foreach ($role as $t) { ?>
+                  <option value=<?= $t->id?>><?= $t->role ?></option>
+                  <?php }?>
+                  </select>
+                  <?= form_error('roleid', '<small class="text-danger pl-3">', '</small>');?>
                 </div>
 
                 <!-- password -->
@@ -45,13 +53,9 @@
                 </button>
               </form>
               <hr>
-              <div class="text-center">
-                <a class="small font-weight-bold" href="<?= base_url('auth'); ?>">Already have an account? Login!</a>
-              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+    
 
   </div>
