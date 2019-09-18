@@ -46,7 +46,6 @@ class Item extends CI_Controller
     {
         $jenis = $this->input->post('type');
         $merek = $this->input->post('brand');
-        $stok = $this->input->post('stock');
 
         $where = array(
             'id' => $id
@@ -54,8 +53,7 @@ class Item extends CI_Controller
 
         $data = array(
             'jenis' => $jenis,
-            'merek' => $merek,
-            'stok' => $stok
+            'merek' => $merek
         );
 
         $this->m_data->update_data($where, $data, 'tb_item');
