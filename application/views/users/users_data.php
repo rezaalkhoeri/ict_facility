@@ -41,6 +41,7 @@ $this->load->view('partial/head');
                     <tr>
                       <th scope="col">Name</th>
                       <th scope="col">Email</th>
+                      <th scope="col">Role</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -53,6 +54,7 @@ $this->load->view('partial/head');
                     <tr>
                     <td scope="col"><?= $a->name?></td>
                     <td scope="col"><?= $a->email?></td>
+                    <td scope="col"><?= $a->role?></td>
                     <td scope="col">
                         <a href="edit/<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span></a>
 
@@ -81,9 +83,23 @@ $this->load->view('partial/head');
 
       <?php $this->load->view('partial/footer'); ?>
 
+      <!-- modal -->
+      <div id="largeModal" class="modal fade" tabindex="-1" role="dialog">  
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Create an Account!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <?php $this -> load -> library('form_validation');?>
+                    
+                    <?php $this->load->view('auth/registration');?>
+
+                </div>
+            </div>
+        </div>
 
     </div>
-  </div>
 
 </body>
 

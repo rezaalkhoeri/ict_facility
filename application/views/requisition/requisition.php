@@ -71,7 +71,7 @@ $this->load->view('partial/head');
                     <td scope="col"><?= $a->deskripsi?></td>
                     <td scope="col"><?= $a->status?></td>
                     <?php
-                      if ($this->session->userdata('role_id') == 3) {
+                      if ($this->session->userdata('role_id') == 2) {
                     ?>
                       <td scope="col">
                           <a href="edit/<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span></a>
@@ -101,6 +101,8 @@ $this->load->view('partial/head');
       <!-- End of Main Content -->
       <?php $this->load->view('partial/script'); ?>
       <?php $this->load->view('partial/footer'); ?>
+    </div>
+  </div>
 
 </body>
 
