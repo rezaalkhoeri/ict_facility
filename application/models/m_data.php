@@ -63,7 +63,7 @@ class M_data extends CI_Model{
     }
 
     function join_table_detail_distribution($id){
-        $sql = "SELECT tb_tr_distribution.id, tb_item.jenis, tb_item.merek, tb_detail_item.serial_number, tb_detail_item.asset_number, 
+        $sql = "SELECT tb_tr_distribution.*, tb_item.jenis, tb_item.merek, tb_detail_item.serial_number, tb_detail_item.asset_number, 
         tb_detail_item.value_price, tb_detail_tiket.quantity
         FROM tb_tr_distribution JOIN tb_tr_requisition ON tb_tr_distribution.id_requisition = tb_tr_requisition.id
         JOIN tb_tiket ON tb_tr_requisition.id_tiket = tb_tiket.id
