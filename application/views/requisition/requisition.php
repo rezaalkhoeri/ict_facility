@@ -101,6 +101,8 @@ $this->load->view('partial/head');
       <!-- End of Main Content -->
       <?php $this->load->view('partial/script'); ?>
       <?php $this->load->view('partial/footer'); ?>
+    </div>
+  </div>
 
 </body>
 
