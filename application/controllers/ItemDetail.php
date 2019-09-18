@@ -16,7 +16,7 @@ class ItemDetail extends CI_Controller
 
     public function index()
     {
-        $data['get'] = $this->m_data->join_table()->result();
+        $data['get'] = $this->m_data->join_table_detail_item()->result();
 
         // print_r($data);
 
