@@ -65,13 +65,13 @@
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('Item/index');?>">
         <i class="fas fa-fw fa-angle-double-right"></i>
-          <span class="font-weight-bold">Item Management</span></a>
+          <span class="font-weight-bold">Item</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('Additem/index');?>">
         <i class="fas fa-fw fa-angle-double-right"></i>
-          <span class="font-weight-bold">Item</span></a>
+          <span class="font-weight-bold">Item Detail</span></a>
       </li>
 
       <li class="nav-item">
