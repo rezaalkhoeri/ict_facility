@@ -57,25 +57,25 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('Item/index');?>">
-        <i class="fas fa-fw fa-angle-double-right"></i>
+        <i class="fas fa-box"></i>
           <span class="font-weight-bold">Item</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('itemDetail/index');?>">
-        <i class="fas fa-fw fa-angle-double-right"></i>
+        <i class="fas fa-boxes"></i>
           <span class="font-weight-bold">Item Detail</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('Users/index');?>">
-        <i class="fas fa-fw fa-angle-double-right"></i>
+        <i class="fas fa-users-cog"></i>
           <span class="font-weight-bold">User Management</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('Location/index');?>">
-        <i class="fas fa-fw fa-angle-double-right"></i>
+        <i class="fas fa-map-marker-alt"></i>
           <span class="font-weight-bold">Location</span></a>
       </li>
 
@@ -93,7 +93,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('Distribution/index');?>">
-        <i class="fas fa-fw fa-angle-double-right"></i>
+        <i class="fas fa-people-carry"></i>
           <span class="font-weight-bold">Distribution</span></a>
       </li>
 

@@ -38,7 +38,8 @@ $this->load->view('partial/head');
               <div class="table-responsive">
                 <div class="form-group">
                   <a href="<?= base_url('Requisition/index_input')?>" role="button">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal">Create Request Order</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal"><i class="fas fa-plus"></i> Create Request Order</button>
+                    
                   </a>
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -67,12 +68,12 @@ $this->load->view('partial/head');
                       if ($this->session->userdata('role_id') == 2 || $this->session->userdata('role_id') == 3) {
                     ?>
                       <td scope="col">
-                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary">Details</span></a>
-                          <a href="#"><span class="badge badge-success">Approve</span></a>
+                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary"><i class="fas fa-info"></i>Details</span></a>
+                          <a href="#"><span class="badge badge-success"><i class="fas fa-check-double"></i>Approve</span></a>
                       </td>
                     <?php } else { ?>
                       <td scope="col">
-                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary">Details</span></a>
+                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary"><i class="fas fa-info"></i>Details</span></a>
                       </td>
                     <?php } ?>
 

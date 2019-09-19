@@ -36,6 +36,29 @@ class Users extends CI_Controller
         redirect('Users/index');
     }
 
+    public function edit($id)
+    {
+        $where = array('id'=> $id);
+        $data['get'] = $this->m_data->edit_data($where, 'tb_user')->result();
+        $data['title'] = 'Admin | Edit User';
+        $this->load->view('Users/users_edit', $data);
+    }
+
+    public function update($id){
+        $name = $this->input->post('name');
+        $email = $this->input->post('email');
+
+        $where = array(
+            'id' => $id
+        );
+        $data = array(
+            'name' => $name,
+            'email' => $email
+        );
+        $this->m_data->update_data($where, $data, 'tb_user');
+        redirect('Users/index');
+    }
+
     public function registration()
     {
         $name =  $this->input->post('name', true);

@@ -75,13 +75,11 @@ $this->load->view('partial/head');
                     ?>
                       <td scope="col">
                           <a href="edit/<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span></a>
-                          <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a>
                           <a href="#"><span class="badge badge-success">Approve</span></a>
                       </td>
                     <?php } else { ?>
                       <td scope="col">
                           <a href="edit/<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span></a>
-                          <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a>
                       </td>
                     <?php } ?>
 

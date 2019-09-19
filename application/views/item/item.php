@@ -34,7 +34,7 @@ $this->load->view('partial/head');
               <div class="card-body">
                 <div class="table-responsive">
                   <div class="form-group">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal">Add Item</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal"><i class="fa fa-plus"></i> Add Item</button>
                   </div>
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
@@ -56,7 +56,11 @@ $this->load->view('partial/head');
                     <td scope="col"><?= $a->merek?></td>
                     <td scope="col"><?= $a->stok?> Unit </td>
                     <td scope="col">
-                        <a href="#" data-toggle="modal" data-target="#edit<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span></a>
+                        <div class="text-center">
+                        <a href="#" data-toggle="modal" data-target="#edit<?php echo $a->id ?>"><span class="badge badge-primary">
+                        <i class="far fa-edit"></i> Edit</span></a>
+                        </div>
+
                         <!-- <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a> -->
                     </td>
                     </tr>

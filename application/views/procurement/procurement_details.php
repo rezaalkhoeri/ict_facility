@@ -31,7 +31,7 @@ $this->load->view('partial/head');
           <h1 class="h3 mb-4 text-gray-800 font-weight-bold">Procurement | Details</h1>
           <?php foreach ($get as $d) { ?>
 
-          <a class="btn btn-warning" href="<?= base_url('Procurement/pdf/'.$d->id)?>"> <i class="fa fa-file"></i> Export PDF </a> 
+          <a class="btn btn-warning" href="<?= base_url('Procurement/pdf/'.$d->id)?>" target="_blank"> <i class="fa fa-file"></i> Export PDF </a> 
 
         <form action="<?= base_url('Procurement/details/'.$d->id);?>" method="post">
 

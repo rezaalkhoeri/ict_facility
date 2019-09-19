@@ -51,7 +51,7 @@ class M_data extends CI_Model{
     }
 
     function join_table_detail_procurement($id){
-        $sql = "SELECT tb_tr_procurement.id, tb_tr_procurement.deskripsi, tb_tr_procurement.payment_method, tb_tr_requisition.cost_center, tb_tr_requisition.requestor, tb_detail_tiket.quantity, tb_item.jenis, tb_item.merek, tb_detail_item.serial_number, tb_detail_item.asset_number,
+        $sql = "SELECT tb_tr_procurement.id, tb_tr_procurement.deskripsi, tb_tr_procurement.payment_method, tb_tr_requisition.cost_center, tb_tr_requisition.requestor, tb_tr_requisition.quantity, tb_item.jenis, tb_item.merek, tb_detail_item.serial_number, tb_detail_item.asset_number,
         tb_detail_item.value_price, tb_tr_procurement.status, tb_tiket.no_tiket
         FROM tb_tr_procurement JOIN tb_tr_requisition ON tb_tr_procurement.id_requisition = tb_tr_requisition.id
         JOIN tb_tiket ON tb_tr_requisition.id_tiket = tb_tiket.id
