@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Item extends CI_Controller 
+class Item extends CI_Controller
 {
 
     public function __construct()
@@ -13,14 +13,14 @@ class Item extends CI_Controller
             redirect('auth');
         }
     }
-    
+
     public function index()
     {
         $data['get'] = $this->m_data->tampil_data_item('tb_item','jenis')->result();
         $data['title'] = 'Asset Management | Items';
         $this->load->view('Item/item', $data);
     }
-    
+
     public function tambah()
     {
         $this->load->view('item');
@@ -42,7 +42,7 @@ class Item extends CI_Controller
 
     }
 
-    public function update()
+    public function update($id)
     {
         $jenis = $this->input->post('type');
         $merek = $this->input->post('brand');
@@ -51,11 +51,13 @@ class Item extends CI_Controller
         $where = array(
             'id' => $id
         );
+
         $data = array(
             'jenis' => $jenis,
             'merek' => $merek,
             'stok' => $stok
         );
+
         $this->m_data->update_data($where, $data, 'tb_item');
         redirect('Item/index');
     }

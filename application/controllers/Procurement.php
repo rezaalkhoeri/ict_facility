@@ -13,17 +13,25 @@ class Procurement extends CI_Controller{
     }
     
     function index(){
-        $data['get'] = $this->m_data->tampil_data('procurement')->result();
-        // var_dump($data) ;
-        
-        $title['title'] = 'Procurement Form';
-        $this->load->view('templates/index_sidebar', $title);
-        $this->load->view('procurement', $data);
-        $this->load->view('templates/index_footer');
+        $data['get'] = $this->m_data->join_table_procurement()->result();
+        $data['title'] = 'Asset Management | Procurement';
+        $this->load->view('Procurement/procurement', $data);
     }
     
-    function tambah(){
-        $this->load->view('procurement');
+    function index_input(){
+        $title['title'] = 'Procurement Form';
+        $this->load->view('templates/index_sidebar2', $title);
+        $this->load->view('Procurement/procurement_input');
+        $this->load->view('templates/index_footer');
+    }
+
+    function details($id){
+        $data['get'] = $this->m_data->join_table_detail_procurement($id)->result();
+        // print_r($data);
+        // die;
+        $data['title'] = 'Procurement Form';
+        $this->load->view('Procurement/procurement_details',$data);
+        
     }
 
     function tambah_aksi(){
@@ -50,8 +58,24 @@ class Procurement extends CI_Controller{
             'paymentmethod' => $paymentmethod,
             'status' => $status
         );
+        
         $this->m_data->input_data($data, 'procurement');
         redirect('Procurement/index');
         
     }
-}
+
+    function pdf($id){
+        $this->load->library('dompdf_gen');
+        $data['get'] = $this->m_data->join_table_detail_procurement($id)->result();
+        $this->load->view('pdf/detail_report_procurement', $data);
+
+        $paper_size = 'A4';
+        $orientation = 'potrait';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("detail_report_procurement.pdf", array('Attachment' =>0));
+    }
+}   

@@ -15,13 +15,5 @@
   <!-- Custom styles for this template-->
   <link href="<?= base_url('assets'); ?>/css/sb-admin-2.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/css/jquery.dataTables.css">
-
-  
-  <!-- Datatables
-  <link href="<?= base_url('assets'); ?>/vendor/datatables2/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets'); ?>/vendor/datatables2/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets'); ?>/vendor/datatables2/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets'); ?>/vendor/datatables2/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets'); ?>/vendor/datatables2/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet"> -->
+  <link href="<?= base_url('assets'); ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>

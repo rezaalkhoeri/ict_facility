@@ -58,13 +58,13 @@
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('Item/index');?>">
         <i class="fas fa-fw fa-angle-double-right"></i>
-          <span class="font-weight-bold">Item Management</span></a>
+          <span class="font-weight-bold">Item</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('Additem/index');?>">
+        <a class="nav-link" href="<?= base_url('itemDetail/index');?>">
         <i class="fas fa-fw fa-angle-double-right"></i>
-          <span class="font-weight-bold">Item</span></a>
+          <span class="font-weight-bold">Item Detail</span></a>
       </li>
 
       <li class="nav-item">
@@ -86,19 +86,19 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('servicedesk/procurement');?>">
+        <a class="nav-link" href="<?= base_url('Procurement/index');?>">
         <i class="fas fa-fw fa-angle-double-right"></i>
           <span class="font-weight-bold">Procurement</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('servicedesk/distribution');?>">
+        <a class="nav-link" href="<?= base_url('Distribution/index');?>">
         <i class="fas fa-fw fa-angle-double-right"></i>
           <span class="font-weight-bold">Distribution</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('servicedesk/facilities');?>">
+        <a class="nav-link" href="<?= base_url('Facilities/index');?>">
         <i class="fas fa-fw fa-angle-double-right"></i>
           <span class="font-weight-bold">Facilities/Asset Report</span></a>
       </li>

@@ -12,7 +12,7 @@ class Auth extends CI_Controller
     // function buat login
     public function index()
     {
-         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
 
@@ -100,11 +100,11 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false){
-            $data['title']='Regist Here';
-            $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/registration');
-            $this->load->view('templates/auth_footer');
-        } else {
+                $data['title']='Regist Here';
+                $this->load->view('templates/auth_header', $data);
+                $this->load->view('auth/registration');
+                $this->load->view('templates/auth_footer');
+            } else {
             $data = [
                 'name' => htmlspecialchars($name),
                 'email' => htmlspecialchars($email),
@@ -117,7 +117,7 @@ class Auth extends CI_Controller
 
             $this->db->insert('tb_user', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Thank you! Your account has been created. Please Login.</div>');
-            redirect('auth');
+            redirect('users');
         }
     }
 
