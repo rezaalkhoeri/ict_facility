@@ -132,7 +132,7 @@ $this->load->view('partial/head');
         			 <div
         			 class="form-group">
         			 <label for="date">Date</label><br/>
-        			 <input type="date" name="date" id="date">
+        			 <input type="date" name="date" id="actualDate">
         			 <span class="text-warning"></span>
         			 </div>
 
@@ -170,6 +170,11 @@ $this->load->view('partial/head');
           var x = $(".z:checked").length;
           document.getElementById("y").value = x;
         };
+
+        $( "selector" ).datepicker({
+            dateFormat: "yyyy-mm-dd"
+        })
+
       </script>
 
     </div>
