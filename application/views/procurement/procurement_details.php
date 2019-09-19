@@ -20,7 +20,7 @@ $this->load->view('partial/head');
       <!-- Main Content -->
       <div id="content">
 
-          <?php 
+          <?php
             $this->load->view('partial/topbar');
           ?>
 
@@ -31,7 +31,7 @@ $this->load->view('partial/head');
           <h1 class="h3 mb-4 text-gray-800 font-weight-bold">Procurement | Details</h1>
           <?php foreach ($get as $d) { ?>
 
-          <a class="btn btn-warning" href="<?= base_url('Procurement/pdf/'.$d->id)?>"> <i class="fa fa-file"></i> Export PDF </a> 
+          <a class="btn btn-warning" href="<?= base_url('Procurement/pdf/'.$d->id)?>" target="_blank"> <i class="fa fa-file"></i> Export PDF </a>
 
         <form action="<?= base_url('Procurement/details/'.$d->id);?>" method="post">
 
@@ -122,11 +122,11 @@ $this->load->view('partial/head');
         <textarea readonly class="form-control-plaintext" id="description" rows="3" name="description"><?= $d->deskripsi?>
         </textarea>
         </div>
-        </div> 
-        
+        </div>
+
       <!-- button back-->
         <a href="<?= base_url('Procurement/index')?>" role="button">
-        <button type="button" value="submit" class="btn btn-danger"> 
+        <button type="button" value="submit" class="btn btn-danger">
         Back
       </button>
       </a>
@@ -135,7 +135,7 @@ $this->load->view('partial/head');
       <?php } ?>
 
       <hr>
-      
+
       </div>
         <!-- /.container-fluid -->
 

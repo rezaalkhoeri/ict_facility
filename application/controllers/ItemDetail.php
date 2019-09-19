@@ -147,9 +147,9 @@ class ItemDetail extends CI_Controller
             'condition' => $condition
         );
 
-        echo '<pre>',print_r($where),'</pre>';
-        echo '<pre>',print_r($data),'</pre>';
-        die;
+        // echo '<pre>',print_r($where),'</pre>';
+        // echo '<pre>',print_r($data),'</pre>';
+        // die;
 
         $this->m_data->update_data($where, $data,'tb_detail_item');
         redirect('itemDetail/index');
