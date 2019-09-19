@@ -36,7 +36,7 @@
           <h1 class="h3 mb-4 text-gray-800 font-weight-bold">Distribution | Details</h1>
           <?php foreach ($get as $d) { ?>
 
-        <form action="<?= base_url('Distribution/details/'.$d->id);?>" method="post" style="align-content:center">
+        <form action="<?= base_url('Distribution/details/'.$d->id);?>" method="post">
 
        <!-- receipt number -->
         <div class="form-group row">
@@ -46,27 +46,27 @@
           </div>
         </div>
 
-	    <!-- cost center -->
+	    <!-- recepient -->
         <div class="form-group row">
-        <label for="costcenter" class="col-sm-2 col-form-label">Cost Center</label>
+        <label for="recepient" class="col-sm-2 col-form-label">Recepient</label>
         <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="costcenter" name="costcenter" value="<?= $d->cost_center?>">
+        <input type="text" readonly class="form-control-plaintext" id="recepient" name="recepient" value="<?= $d->recepient?>">
         </div>
         </div>
 
-        <!-- requestor -->
+        <!-- giver -->
         <div class="form-group row">
-        <label for="requestor" class="col-sm-2 col-form-label">Requestor</label>
+        <label for="giver" class="col-sm-2 col-form-label">Giver</label>
         <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="requestor" name="requestor" value="<?= $d->requestor?>">
+        <input type="text" readonly class="form-control-plaintext" id="giver" name="giver" value="<?= $d->giver?>">
         </div>
         </div>
 
-        <!-- quantity -->
+        <!-- date -->
         <div class="form-group row">
-        <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
+        <label for="date" class="col-sm-2 col-form-label">Date</label>
         <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="quantity" name="quantity" value="<?= $d->quantity?>">
+        <input type="text" readonly class="form-control-plaintext" id="date" name="date" value="<?= $d->date?>">
         </div>
         </div>
 
@@ -102,11 +102,11 @@
         </div>
         </div>
 
-        <!-- payment method -->
+        <!-- quantity -->
         <div class="form-group row">
-        <label for="paymentmethod" class="col-sm-2 col-form-label">Payment Method</label>
+        <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
         <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="paymentmethod" name="paymentmethod" value="<?= $d->payment_method?>">
+        <input type="text" readonly class="form-control-plaintext" id="quantity" name="quantity" value="<?= $d->quantity?>">
         </div>
         </div>
 
