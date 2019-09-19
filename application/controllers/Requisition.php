@@ -40,6 +40,9 @@ class Requisition extends CI_Controller{
         $description = $this->input->post('description');
         $quantity = $this->input->post('quantity');
 
+        $timestamp = strtotime($date);
+        $acttualDate = date("Y-m-d", $timestamp);
+
         $tiket = array(
           'no_tiket' => $noTiket
         );
@@ -71,7 +74,7 @@ class Requisition extends CI_Controller{
             'quantity' => $quantity,
             'cost_center' => $costcenter,
             'requestor' => $requestor,
-            'date' => $date,
+            'date' => $acttualDate,
             'deskripsi' => $description,
             'status' => 0
         );
