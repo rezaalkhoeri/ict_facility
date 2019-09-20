@@ -44,6 +44,7 @@ $this->load->view('partial/head');
                         <th scope="col">Asset Number</th>
                         <th scope="col">Value Price</th>
                         <th scope="col">Condition</th>
+                        <th scope="col">Status Barang</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
@@ -60,6 +61,17 @@ $this->load->view('partial/head');
                       <td scope="col"><?= $a->asset_number?></td>
                       <td scope="col"><?= "Rp ".number_format($a->value_price,2,',','.');?></td>
                       <td scope="col"><?= $a->condition?></td>
+                      <td scope="col">
+                        <?php
+                          if ($a->status == 0){
+                            echo "<label class='badge badge-danger'>On loan</label>";
+                          } elseif ($a->status == 1) {
+                            echo "<label class='badge badge-success'>Available</label>";
+                          } elseif ($a->status == 2) {
+                            echo "<label class='badge badge-warning'>On Booking</label>";
+                          }
+                        ?>
+                      </td>
                       <td scope="col">
                           <div class="text-center">
                           <a href="#" data-toggle="modal" data-target="#edit<?= $a->id ?>"><span class="badge badge-primary"><i class="fa fa-edit"></i> Edit</span></a>

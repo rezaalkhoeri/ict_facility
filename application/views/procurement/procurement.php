@@ -67,12 +67,12 @@ $this->load->view('partial/head');
                       if ($this->session->userdata('role_id') == 2 || $this->session->userdata('role_id') == 3) {
                     ?>
                       <td scope="col">
-                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary"><i class="fas fa-info"></i>Details</span></a>
-                          <a href="#"><span class="badge badge-success"><i class="fas fa-check-double"></i>Approve</span></a>
+                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary">Details</span></a>
+                          <a href="#"><span class="badge badge-success">Approve</span></a>
                       </td>
                     <?php } else { ?>
                       <td scope="col">
-                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary"><i class="fas fa-info"></i>Details</span></a>
+                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary">Details</span></a>
                       </td>
                     <?php } ?>
 

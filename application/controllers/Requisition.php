@@ -44,7 +44,8 @@ class Requisition extends CI_Controller{
         $acttualDate = date("Y-m-d", $timestamp);
 
         $tiket = array(
-          'no_tiket' => $noTiket
+          'no_tiket' => $noTiket,
+          'status' => 1
         );
 
         $this->m_data->input_data($tiket,'tb_tiket');
@@ -79,11 +80,20 @@ class Requisition extends CI_Controller{
             'status' => 0
         );
 
+        $detailItem = array();
+        for ($i=0; $i < count($item) ; $i++) {
+          array_push($detailItem, array(
+            'id' => $item[$i],
+            'status' => 2
+          ));
+        }
+
         // echo '<pre>',print_r($tiket),'</pre>';
         // echo '<pre>',print_r($detailTiket),'</pre>';
         // echo '<pre>',print_r($data),'</pre>';
         // die;
 
+        $this->m_data->multiple_update('tb_detail_item', $detailItem,'id');
         $this->m_data->input_data($data, 'tb_tr_requisition');
         redirect('Requisition/index');
     }
@@ -99,11 +109,14 @@ class Requisition extends CI_Controller{
         $this->load->view('templates/index_sidebar2', $title);
         $this->load->view('Requisition/requisition_edit');
         $this->load->view('templates/index_footer');
+    }
 
-        // $where = array('id' => $id);
-        // $data['tb_tr_requisition'] = $this->m_data->edit_data($where, 'tb_tr_requisition')->result();
-        // // var_dump($data);
-        // $this->load->view('requisition_edit', $data);
+    function detail($id){
+        $data['title'] = 'Requisition Form';
+        $data['get'] = $this->m_data->join_table_requisition_detail($id)->result();
+        $data['item_detail'] = $this->m_data->join_table_requisition_item($id)->result();
+
+        $this->load->view('Requisition/requisition_detail', $data);
     }
 
     function update($id){
@@ -132,4 +145,56 @@ class Requisition extends CI_Controller{
         redirect('Requisition/index');
         // var_dump($where);
     }
+
+    function approve($id)
+    {
+      $detailItem = $this->m_data->join_table_requisition_item($id)->result();
+      $itemID = array();
+      foreach ($detailItem as $a) {
+        array_push($itemID, array(
+          'id_item' => $a->id_item,
+          'status' => 0
+        ));
+      }
+
+      $where = array('id' => $id);
+      $data = array('status' => 1);
+
+      $this->m_data->multiple_update('tb_detail_item', $itemID,'id_item');
+      $this->m_data->update_data($where, $data, 'tb_tr_requisition');
+      redirect('Requisition/index');
+    }
+
+    function decline($id)
+    {
+      $detailItem = $this->m_data->join_table_requisition_item($id)->result();
+      $itemID = array();
+      foreach ($detailItem as $a) {
+        array_push($itemID, array(
+          'id_item' => $a->id_item,
+          'status' => 1
+        ));
+      }
+
+      $where = array('id' => $id);
+      $data = array('status' => 2);
+
+      $this->m_data->multiple_update('tb_detail_item', $itemID,'id_item');
+      $this->m_data->update_data($where, $data, 'tb_tr_requisition');
+      redirect('Requisition/index');
+    }
+
+
+    function pdf($id){
+      $data['tanggal'] = tanggal();
+      $data['item_detail'] = $this->m_data->join_table_requisition_item($id)->result();
+      $data['get'] = $this->m_data->join_table_requisition_detail($id)->result();
+
+      $this->load->library('pdf');
+
+      $this->pdf->setPaper('A4', 'potrait');
+      $this->pdf->filename = "Surat Pengajuan Peminjaman Asset ICT.pdf";
+      $this->pdf->load_view('pdf/req_pengajuan', $data);
+    }
+
 }
