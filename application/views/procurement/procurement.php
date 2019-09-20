@@ -23,7 +23,7 @@ $this->load->view('partial/head');
       <?php
           $this->load->view('partial/topbar');
         ?>
-        
+
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -37,7 +37,7 @@ $this->load->view('partial/head');
             <div class="card-body">
               <div class="table-responsive">
                 <div class="form-group">
-                  <a href="<?= base_url('Requisition/index_input')?>" role="button">
+                  <a href="<?= base_url('Procurement/index_input')?>" role="button">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal">Create Request Order</button>
                   </a>
                 </div>
@@ -100,4 +100,3 @@ $this->load->view('partial/head');
 
 </body>
 </html>
-

@@ -30,12 +30,11 @@ class Item extends CI_Controller
     {
         $jenis = $this->input->post('type');
         $merek = $this->input->post('brand');
-        $stok = $this->input->post('stock');
 
         $data = array(
             'jenis' => $jenis,
             'merek' => $merek,
-            'stok' => $stok
+            'stok' => 0
         );
         $this->m_data->input_data($data, 'tb_item');
         redirect('Item/index');

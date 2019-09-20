@@ -34,7 +34,7 @@ $this->load->view('partial/head');
               <div class="card-body">
                 <div class="table-responsive">
                   <div class="form-group">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#extraLargeModal"> Add Detail Item </button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#extraLargeModal"><i class="fa fa-plus"></i> Add Detail Item </button>
                   </div>
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -44,6 +44,7 @@ $this->load->view('partial/head');
                         <th scope="col">Asset Number</th>
                         <th scope="col">Value Price</th>
                         <th scope="col">Condition</th>
+                        <th scope="col">Status Barang</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
@@ -61,7 +62,20 @@ $this->load->view('partial/head');
                       <td scope="col"><?= "Rp ".number_format($a->value_price,2,',','.');?></td>
                       <td scope="col"><?= $a->condition?></td>
                       <td scope="col">
-                          <a href="#" data-toggle="modal" data-target="#edit<?= $a->id ?>"><span class="badge badge-primary">Edit</span></a>
+                        <?php
+                          if ($a->status == 0){
+                            echo "<label class='badge badge-danger'>On loan</label>";
+                          } elseif ($a->status == 1) {
+                            echo "<label class='badge badge-success'>Available</label>";
+                          } elseif ($a->status == 2) {
+                            echo "<label class='badge badge-warning'>On Booking</label>";
+                          }
+                        ?>
+                      </td>
+                      <td scope="col">
+                          <div class="text-center">
+                          <a href="#" data-toggle="modal" data-target="#edit<?= $a->id ?>"><span class="badge badge-primary"><i class="fa fa-edit"></i> Edit</span></a>
+                          </div>
                           <!-- <span href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a> -->
                       </td>
                       </tr>
