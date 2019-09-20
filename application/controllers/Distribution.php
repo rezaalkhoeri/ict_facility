@@ -19,10 +19,9 @@ class Distribution extends CI_Controller{
     }
 
     function index_input(){
+        $data['item'] = $this->m_data->join_table_distribution()->result();
         $title['title'] = 'Distribution Form';
-        $this->load->view('templates/index_sidebar2', $title);
-        $this->load->view('Distribution/distribution_input');
-        $this->load->view('templates/index_footer');
+        $this->load->view('Distribution/distribution_input', $data);
     }
     
     function details($id){

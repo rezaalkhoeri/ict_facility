@@ -29,13 +29,13 @@ $this->load->view('partial/head');
 
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary"> Requisition </h6>
+              <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-file-signature"></i> Requisition </h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <div class="form-group">
                   <a href="<?= base_url('Requisition/index_input')?>" role="button">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal">Create Request Order</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal"><i class="fa fa-plus"></i> Create Request Order</button>
                   </a>
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

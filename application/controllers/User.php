@@ -18,9 +18,7 @@ class User extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['title'] = 'Asset Management - Dashboard';
-        $this->load->view('templates/index_sidebar2', $data);
         $this->load->view('user/index', $data);
-        $this->load->view('templates/index_footer');
     }
 
     public function requisition()

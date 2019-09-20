@@ -43,52 +43,12 @@ $this->load->view('partial/head');
           </div>
         </div>
 
-			 <!-- cost center -->
-				<div class="form-group row">
-				<label for="costcenter" class="col-sm-2 col-form-label">Cost Center</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="costcenter" name="costcenter" value="<?= $d->cost_center?>">
-        </div>
-        </div>
-
-      <!-- requestor -->
-        <div class="form-group row">
-        <label for="requestor" class="col-sm-2 col-form-label">Requestor</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="requestor" name="requestor" value="<?= $d->requestor?>">
-        </div>
-        </div>
-
-      <!-- quantity -->
-        <div class="form-group row">
-        <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="quantity" name="quantity" value="<?= $d->quantity?>">
-        </div>
-        </div>
-
       <!-- item -->
         <div class="form-group row">
           <label for="item" class="col-sm-2 col-form-label">Item</label>
           <div class="col-sm-10">
             <input type="text" readonly class="form-control-plaintext" name="item" id="item" value="<?= $d->jenis.' | '.$d->merek?>">
           </div>
-        </div>
-
-      <!-- serial number -->
-        <div class="form-group row">
-        <label for="serialnumber" class="col-sm-2 col-form-label">Serial Number</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="serialnumber" name="serialnumber" value="<?= $d->serial_number?>">
-        </div>
-        </div>
-
-      <!-- asset number -->
-        <div class="form-group row">
-        <label for="assetnumber" class="col-sm-2 col-form-label">Asset Number</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="assetnumber" name="assetnumber" value="<?= $d->asset_number?>">
-        </div>
         </div>
 
       <!-- value price -->
