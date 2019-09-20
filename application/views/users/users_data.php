@@ -34,7 +34,7 @@ $this->load->view('partial/head');
           <div class="card-body">
             <div class="table-responsive">
               <div class="form-group">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal">Add</button>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal"><i class="fas fa-user-plus"></i> Add</button>
               </div>
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               		<thead>
@@ -56,13 +56,13 @@ $this->load->view('partial/head');
                     <td scope="col"><?= $a->email?></td>
                     <td scope="col"><?= $a->role?></td>
                     <td scope="col">
-                        <a href="edit/<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span></a>
-
+                        <div class="text-center">
+                        <a href="edit/<?php echo $a->id ?>"><span class="badge badge-primary">
+                        <i class="far fa-edit"></i> Edit
+                        </span></a>
+                        </div>
                     </td>
-
-
                     </tr>
-
                   <?php }
                   ?>
                   </tbody>

@@ -42,16 +42,13 @@ $this->load->view('partial/head');
               		<thead>
                     <tr>
                       <th scope="col">Ticket</th>
-                      <th scope="col">Item</th>
-                      <th scope="col">Asset Number</th>
-                      <th scope="col">Serial Number</th>
                       <th scope="col">Cost Center</th>
                       <th scope="col">Quantity</th>
                       <th scope="col">Date</th>
                       <th scope="col">Requestor</th>
                       <th scope="col">Description</th>
                       <th scope="col">Status</th>
-                      <th scope="col">Action</th>
+                      <th scope="col" width="100px;">Action</th>
 
                     </tr>
                   </thead>
@@ -61,30 +58,28 @@ $this->load->view('partial/head');
                   ?>
                     <tr>
                     <td scope="col"><?= $a->no_tiket?></td>
-                    <td scope="col"><?= $a->jenis.' | '.$a->merek?></td>
-                    <td scope="col"><?= $a->asset_number?></td>
-                    <td scope="col"><?= $a->serial_number?></td>
                     <td scope="col"><?= $a->cost_center?></td>
                     <td scope="col"><?= $a->quantity?></td>
                     <td scope="col"><?= $a->date?></td>
                     <td scope="col"><?= $a->requestor?></td>
                     <td scope="col"><?= $a->deskripsi?></td>
-                    <td scope="col"><?= $a->status?></td>
-                    <?php
-                      if ($this->session->userdata('role_id') == 2) {
-                    ?>
-                      <td scope="col">
-                          <a href="edit/<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span></a>
-                          <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a>
-                          <a href="#"><span class="badge badge-success">Approve</span></a>
-                      </td>
-                    <?php } else { ?>
-                      <td scope="col">
-                          <a href="edit/<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span></a>
-                          <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a>
-                      </td>
-                    <?php } ?>
-
+                    <td scope="col">
+                      <?php
+                        if ($a->status == 0){
+                          echo "<label class='badge badge-warning'>Pending</label>";
+                        } elseif ($a->status == 1) {
+                          echo "<label class='badge badge-success'>Accept</label>";
+                        } elseif ($a->status == 2) {
+                          echo "<label class='badge badge-danger'>Decline</label>";
+                        }
+                      ?>
+                    </td>
+                    <td scope="col">
+                      <a href="edit/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-edit"></span></a>
+                      <a href="detail/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-eye"></span></a>
+                      <a href="approve/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-check"></span></a>
+                      <a href="decline/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-times"></span></a>
+                    </td>
                     </tr>
                   <?php } ?>
 
