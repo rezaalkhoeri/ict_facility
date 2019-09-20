@@ -29,12 +29,12 @@
 
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Location</h6>
+                <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-map-marker-alt"></i> Location</h6>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <div class="form-group">
-                     <button class="btn btn-primary" data-toggle="modal" data-target="#smallModal">Add Location</button>
+                     <button class="btn btn-primary" data-toggle="modal" data-target="#smallModal"><i class="fa fa-plus"></i> Add Location</button>
                   </div>
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -54,8 +54,10 @@
                       <td scope="col"><?= $a->nama_lokasi?></td>
                       <td scope="col"><?= $a->deskripsi?></td>
                       <td scope="col">
-                          <a href="#" data-toggle="modal" data-target="#edit<?php echo $a->id ?>"><span class="badge badge-primary">Edit</span>
+                          <div class="text-center">
+                          <a href="#" data-toggle="modal" data-target="#edit<?php echo $a->id ?>"><span class="badge badge-primary"><i class="fa fa-edit"></i> Edit</span>
                           </a>
+                          </div>
                       </td>
 
 

@@ -81,13 +81,13 @@
 
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('Requisition/index');?>">
-        <i class="fas fa-fw fa-angle-double-right"></i>
+        <i class="fas fa-file-signature"></i>
           <span class="font-weight-bold">Requisition</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('Procurement/index');?>">
-        <i class="fas fa-fw fa-angle-double-right"></i>
+        <i class="fas fa-dolly-flatbed"></i>
           <span class="font-weight-bold">Procurement</span></a>
       </li>
 
@@ -99,7 +99,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('Facilities/index');?>">
-        <i class="fas fa-fw fa-angle-double-right"></i>
+        <i class="fas fa-scroll"></i>
           <span class="font-weight-bold">Facilities/Asset Report</span></a>
       </li>
 
