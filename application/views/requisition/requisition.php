@@ -48,7 +48,7 @@ $this->load->view('partial/head');
                       <th scope="col">Requestor</th>
                       <th scope="col">Description</th>
                       <th scope="col">Status</th>
-                      <th scope="col">Action</th>
+                      <th scope="col" width="100px;">Action</th>
 
                     </tr>
                   </thead>
@@ -77,7 +77,8 @@ $this->load->view('partial/head');
                     <td scope="col">
                       <a href="edit/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-edit"></span></a>
                       <a href="detail/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-eye"></span></a>
-                      <!-- <a href="delete/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-trash"></span></a> -->
+                      <a href="approve/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-check"></span></a>
+                      <a href="decline/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-times"></span></a>
                     </td>
                     </tr>
                   <?php } ?>

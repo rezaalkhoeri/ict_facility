@@ -36,6 +36,22 @@ class M_data extends CI_Model{
         return $query;
     }
 
+    function join_table_requisition_detail($id){
+        $sql = "SELECT tb_tr_requisition.*, tb_tiket.no_tiket FROM tb_tr_requisition JOIN tb_tiket ON tb_tiket.id = tb_tr_requisition.id_tiket WHERE tb_tr_requisition.id =".$id;
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    function join_table_requisition_item($id){
+        $sql = "SELECT tb_detail_item.*, tb_item.jenis, tb_item.merek FROM tb_detail_item JOIN tb_item ON tb_detail_item.id_item = tb_item.id
+                JOIN tb_detail_tiket ON tb_detail_tiket.id_item = tb_detail_item.id
+                JOIN tb_tiket ON tb_tiket.id = tb_detail_tiket.id_tiket
+                JOIN tb_tr_requisition ON tb_tr_requisition.id_tiket = tb_tiket.id
+                WHERE tb_tr_requisition.id =".$id;
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
     function detail_item_req(){ //item
         $sql = "SELECT D.*, I.jenis, I.merek FROM tb_detail_item D JOIN tb_item I ON D.id_item = I.id WHERE D.status = 1";
         $query = $this->db->query($sql);
@@ -51,8 +67,7 @@ class M_data extends CI_Model{
     }
 
     function join_table_detail_procurement($id){
-        $sql = "SELECT tb_tr_procurement.*, tb_item.jenis, tb_item.merek,
-        tb_detail_item.value_price, tb_tiket.no_tiket
+        $sql = "SELECT tb_tr_procurement.*, tb_item.jenis, tb_item.merek, tb_detail_item.value_price, tb_tiket.no_tiket
         FROM tb_tr_procurement JOIN tb_tiket ON tb_tr_procurement.id_tiket = tb_tiket.id
         JOIN tb_detail_tiket ON tb_tiket.id = tb_detail_tiket.id_tiket
         JOIN tb_detail_item ON tb_detail_tiket.id_item = tb_detail_item.id
@@ -111,7 +126,7 @@ class M_data extends CI_Model{
         $this->db->update($table, $data);
     }
 
-    // MULTIPLE UPDATE 
+    // MULTIPLE UPDATE
     function multiple_update($table, $data, $where){
     $this->db->update_batch($table, $data, $where);
     }
