@@ -32,12 +32,12 @@ $this->load->view('partial/head');
 
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary"> Distribution </h6>
+              <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-people-carry"></i> Distribution </h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <div class="form-group">
-                  <a href="<?= base_url('Requisition/index_input')?>" role="button">
+                  <a href="<?= base_url('Distribution/index_input')?>" role="button">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal"><i class="fas fa-plus"></i> Create Request Order</button>
                   </a>
                 </div>

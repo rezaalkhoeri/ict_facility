@@ -32,13 +32,13 @@ $this->load->view('partial/head');
 
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary"> Procurement </h6>
+              <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-dolly-flatbed"></i> Procurement </h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <div class="form-group">
                   <a href="<?= base_url('Procurement/index_input')?>" role="button">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal">Create Request Order</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#largeModal"><i class="fa fa-plus"></i> Create Request Order</button>
                   </a>
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -67,12 +67,12 @@ $this->load->view('partial/head');
                       if ($this->session->userdata('role_id') == 2 || $this->session->userdata('role_id') == 3) {
                     ?>
                       <td scope="col">
-                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary">Details</span></a>
-                          <a href="#"><span class="badge badge-success">Approve</span></a>
+                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary"><i class="fas fa-info"></i> Detail</span></a>
+                          <a href="#"><span class="badge badge-success"><i class="fas fa-check-double"></i> Approve</span></a>
                       </td>
                     <?php } else { ?>
                       <td scope="col">
-                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary">Details</span></a>
+                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary"><i class="fas fa-info"></i> Details</span></a>
                       </td>
                     <?php } ?>
 

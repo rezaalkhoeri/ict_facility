@@ -1,4 +1,18 @@
-    <!-- End of Sidebar -->
+<!DOCTYPE html>
+<html lang="en">
+
+<?php
+$this->load->view('partial/head');
+?>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <?php
+        $this->load->view('partial/sidebar');
+    ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -6,198 +20,116 @@
       <!-- Main Content -->
       <div id="content">
 
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-
-            <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
-
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <img class="img-responsive animated--grow-in" width="240px" height="70px" src="<?= base_url('assets/img/pdsibaru.jpg');?>">
-                </div>
-              </a>
-              
-            </li>
-
-          </ul>
-
-        </nav>
-        <!-- End of Topbar -->
+        <?php
+          $this->load->view('partial/topbar');
+        ?>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800 font-weight-bold">Distribution</h1>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Distribution - Order</h6>
+            </div>
+            <div class="card-body">
 
-        <form action="<?= base_url('Distribution/tambah_aksi')?>" method="post">
-        <!-- ticket -->
-        <div id="ticket_feedback" class="form-group">
-        <label for="ticket">Ticket</label>
-        <input type="text" class="form-control" id="ticket" name="ticket" maxlength="15">
+                <form action="<?= base_url('Distribution/tambah_aksi');?>" method="post" name="my_form">
+
+                <!-- receipt number -->
+                <div class="form-group">
+                  <label for="receiptnumber">Receipt number</label>
+                  <input type="text" class="form-control" id="receiptnumber" name="receiptnumber" disabled>
+                </div>
+
+                <!-- ticket -->
+                <div class="form-group">
+                  <label for="ticket">Ticket</label>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon1">Select</button>
+                  </div>
+                  <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                </div>
+                </div>
+
+              <!-- recepient -->
+                <div class="form-group">
+                <label for="recepient">Recepient</label>
+                <input type="text" class="form-control" name="recepient" id="recepient" required>
+                </div>
+
+              <!-- giver -->
+                <div class="form-group">
+                <label for="giver">Giver</label>
+                <input type="text" class="form-control" name="giver" id="giver" required>
+                </div>
+
+              <!-- location -->
+                <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" name="location" id="location" required>
+                </div>
+
+               <!--date-->
+        			 <div class="form-group">
+        			 <label for="date">Date</label><br/>
+        			 <input type="date" name="date" id="actualDate">
+        			 <span class="text-warning"></span>
+        			 </div>
+
+               <!--status-->
+        			 <div class="form-group">
+        			 <label for="status">Status</label><br/>
+        			 <input type="status" name="status" id="status">
+        			 <span class="text-warning"></span>
+        			 </div>
+
+              <!-- description -->
+               <div class="form-group">
+                <label for="description">Description</label>
+                  <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+               </div>
+
+              <!-- button submit-->
+              <div class="form-group">
+               <button type="submit" value="input" class="btn btn-primary"> Save </button>
+               <button type="reset" value="input" class="btn btn-warning"> Clear </button>
+               <a href="<?= base_url('Requisition/index')?>" role="button">
+                  <button type="button" value="" class="btn btn-danger">Cancel</button>
+                </a>
+              </div>
+
+            </form>
+
+          </div>
         </div>
 
-        <!-- receipt num -->
-        <div class="form-group">
-        <label for="receiptnumber">Receipt Number</label>
-        <input type="text" class="form-control" id="receiptnumber" name="receiptnumber">
-        </div>
-
-        <!-- asset num -->
-        <div class="form-group">
-        <label for="assetnumber">Assett Number</label>
-        <input type="text" class="form-control" id="assetnumber" name="assetnumber">
-        </div>
-
-        <!-- item -->
-				<div 
-				class="form-group">
-			 	<label for="item">Item</label>
-			 	<select class="form-control" name="item" id="item">
-				 			<option>Choose</option>
-              <option>Handphone</option>
-              <option>Handy Talk</option>
-              <option>PC Desktop</option>
-              <option>Printer</option>
-              <option>Proyektor</option>
-              <option>Laptop</option>
-							</select>
-			 <i class="form-control-feedback"></i>
-			 <span class="text-warning" ></span>
-			 </div>
-
-       <!--date-->
-			 <div 
-			 class="form-group">
-			 <label for="date">Date</label><br/>
-			 <input type="date" name="date" id="date">
-			 <span class="text-warning"></span>
-			 </div>
-
-       <!-- location -->
-				<div 
-				class="form-group">
-			 	<label for="location">Location</label>
-			 	<select class="form-control" name="location" id="location">
-				 			<option>Choose</option>
-              <!-- <option>Handphone</option> -->
-              <!-- <option>Handy Talk</option> -->
-              <!-- <option>Proyektor</option> -->
-							</select>
-			 <i class="form-control-feedback"></i>
-			 <span class="text-warning" ></span>
-			 </div>
-
-       <!-- status -->
-				<div 
-				class="form-group">
-				<label for="status">Status</label>
-				<select class="form-control" name="status" id="status" >
-				 			<option>Distributed</option>
-				 			<option>Pending</option>
-							</select>
-			 <i class="form-control-feedback"></i>
-			 <span class="text-warning" ></span>
-			 </div>
-
-       <!-- giver -->
-       <div class="form-group">
-       <label for="giver">Giver</label>
-       <input type="text" class="form-control" id="giver" name="giver">
-       </div>
-
-       <!-- recepient -->
-       <div class="form-group">
-       <label for="recepient">Recepient</label>
-       <input type="text" class="form-control" id="recepient" name="recepient">
-       </div>
-
-       <!-- description -->
-       <div class="form-group">
-        <label for="description">Description</label>
-          <textarea class="form-control" id="description" rows="3" name="description">
-          </textarea>
-       </div>
-
-       <!-- input file -->
-       
-        <div class="form-group">
-          <label for="uploadreceiptdoc">Upload Receipt Doc</label>
-          <input type="file" class="form-control-file" id="uploadreceiptdoc" name="uploadreceiptdoc">
-        </div>
-       
-       
-       <!-- button submit-->
-       <a href="#" role="button">
-        <button type="submit" value="input" class="btn btn-primary"> 
-        Submit
-      </button>
-      </a>
-
-      <!-- button cancel-->
-        <a href="<?= base_url('Distribution/index')?>" role="button">
-        <button type="button" value="submit" class="btn btn-danger"> 
-        Cancel
-      </button>
-      </a>
-      </form>
-
-      <hr>
-      
       </div>
         <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
 
+      <?php $this->load->view('partial/script'); ?>
+      <?php $this->load->view('partial/footer'); ?>
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+      <script type="text/javascript">
+        window.updateCount = function() {
+          var x = $(".z:checked").length;
+          document.getElementById("y").value = x;
+        };
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="<?= base_url('assets'); ?>/vendor/jquery/jquery.min.js"></script>
-  <script src="<?= base_url('assets'); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        $( "selector" ).datepicker({
+            dateFormat: "yyyy-mm-dd"
+        })
 
-  <!-- Core plugin JavaScript-->
-  <script src="<?= base_url('assets'); ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
+      </script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="<?= base_url('assets'); ?>/js/sb-admin-2.min.js"></script>
+    </div>
+  </div>
+
 
 </body>
 
 </html>
-
-<script>
-$(document).ready(function(){
-  $("#posSearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#posTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
-
-<script>
-$(document).ready(function() {
-    var text_max = 15;
-    // $('#ticket_feedback').html(text_max + ' characters remaining');
-
-    $('#ticket').keyup(function() {
-        var text_length = $('#ticket').val().length;
-        // var text_remaining = text_max - text_length;
-
-        // $('#ticket_feedback').html(text_remaining + ' characters remaining');
-    });
-});
-</script>
