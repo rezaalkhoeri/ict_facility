@@ -64,13 +64,17 @@ $this->load->view('partial/head');
                       <td scope="col">
                         <?php
                           if ($a->status == 0){
-                            echo "<label class='badge badge-danger'>On loan</label>";
+                            echo "<label class='badge badge-dark'>On loan</label>";
                           } elseif ($a->status == 1) {
                             echo "<label class='badge badge-success'>Available</label>";
                           } elseif ($a->status == 2) {
                             echo "<label class='badge badge-info'>On Request Order</label>";
                           } elseif ($a->status == 3) {
                             echo "<label class='badge badge-warning'>On Procurement</label>";
+                          } elseif ($a->status == 4) {
+                            echo "<label class='badge badge-secondary'>On Procurement Process</label>";
+                          } elseif ($a->status == 5) {
+                            echo "<label class='badge badge-danger'>Declined</label>";
                           }
                         ?>
                       </td>
