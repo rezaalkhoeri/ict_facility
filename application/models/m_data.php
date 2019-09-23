@@ -67,6 +67,14 @@ class M_data extends CI_Model{
     }
 
     function join_table_detail_procurement($id){
+        $sql = "SELECT tb_tr_procurement.*, tb_tiket.no_tiket
+        FROM tb_tr_procurement JOIN tb_tiket ON tb_tr_procurement.id_tiket = tb_tiket.id
+        where tb_tr_procurement.id = ".$id;
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    function join_table_procurement_item($id){
         $sql = "SELECT tb_tr_procurement.*, tb_item.jenis, tb_item.merek, tb_detail_item.value_price, tb_tiket.no_tiket
         FROM tb_tr_procurement JOIN tb_tiket ON tb_tr_procurement.id_tiket = tb_tiket.id
         JOIN tb_detail_tiket ON tb_tiket.id = tb_detail_tiket.id_tiket

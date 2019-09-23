@@ -74,8 +74,12 @@ $this->load->view('partial/head');
                       ?>
                     </td>
                       <td scope="col">
-                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary"><i class="fas fa-info"></i> Detail</span></a>
-                          <a href="#"><span class="badge badge-success"><i class="fas fa-check-double"></i> Approve</span></a>
+                        <div class="text-center">
+                        <!-- <a href="edit/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-edit"></span></a> -->
+                        <a href="details/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-eye"></span></a>
+                        <a href="approve/<?php echo $a->id ?>" class="badge badge-success btn-xs"><span class="fa fa-check"></span></a>
+                        <a href="decline/<?php echo $a->id ?>" class="badge badge-danger btn-xs"><span class="fa fa-times"></span></a>
+                        </div>
                       </td>
                     </tr>
                   <?php } ?>
