@@ -6,6 +6,7 @@ class Procurement extends CI_Controller{
         parent::__construct();
         $this->load->model('m_data');
         $this->load->helper('url');
+
         if (!$this->session->userdata('email'))
         {
             redirect('auth');
@@ -42,90 +43,81 @@ class Procurement extends CI_Controller{
         $valueprice = $this->input->post('valueprice');
         $description = $this->input->post('description');
         $paymentmethod = $this->input->post('paymentmethod');
-        $status = $this->input->post('status');
         $date = $this->input->post('date');
-        
-        // Data Multiple insert
-        $data = array();
+
+        $tiket = array(
+          'no_tiket' => $tiket,
+          'status' => 2
+        );
+
+        $this->m_data->input_data($tiket,'tb_tiket');
+        $getTiketID = $this->db->select('id')->get_where('tb_tiket', $tiket)->result();
+
+        $item = array();
         for ($i=0; $i < count($jenis); $i++) {
-          array_push($data, array(
-              'tiket' => $tiket[$i],
+          array_push($item, array(
               'jenis' => $jenis[$i],
               'merek' => $merek[$i],
-              'value_price' => $valueprice[$i],
-              'deskripsi' => $description[$i],
-              'payment_method' => $paymentmethod[$i],
-              'status' => $status[$i],
-              'date' => $date[$i],
+              'stok' => 0,
+              'status' => 0
             ));
-
-            $this->m_data->input_data($data, 'tb_tr_requisition');
-            redirect('Distribution/index');
         }
 
-        //  Get ID ITEM yang di select
-    //     $value = array(
-    //       'id_item' => $jenis,
-    //     );
-    // }
+        $this->m_data->multiple_insert($item,'tb_item');
 
-    //     // Sortir Data ID ITEM
-    //     sort($value['id_item']);
+        $getItem = array();
+        for ($i=0; $i < count($item); $i++) {
+          $getItem[] = $this->db->select('id')->get_where('tb_item', $item[$i])->result();
+        }
 
+        $detailItem = array();
+        for ($i=0; $i < count($getItem); $i++) {
+          array_push($detailItem, array(
+            'id_item' => $getItem[$i][0]->id,
+            'serial_number' => '-',
+            'asset_number' => '-',
+            'value_price' => $valueprice[$i],
+            'status' => 3
+            ));
+        }
 
-    //     // Get New Stok Data For Updating Item Data Table
-    //       $aItem = 0;
-    //       $aJumlah = 0;
+        $this->m_data->multiple_insert($detailItem,'tb_detail_item');
 
-    //       $stok = array();
-    //       for ($a=0; $a < count($value['id_item']); $a++) {
-    //               if($a == 0){
-    //                 $aItem = $value['id_item'][$a];
-    //                 $aJumlah++;
-    //               } else {
-    //                 if($value['id_item'][$a] == $aItem){
-    //                   $aJumlah++;
-    //                 } else {
-    //                   array_push($stok, array(
-    //                       'id_item' => $aItem,
-    //                       'stok_input' => $aJumlah
-    //                   ));
+        $getDetailItem = array();
+        for ($i=0; $i < count($getItem); $i++) {
+          $getDetailItem[] = $this->db->select('id')->get_where('tb_detail_item', $detailItem[$i])->result();
+        }
 
-    //                   $aItem = $value['id_item'][$a];
-    //                   $aJumlah = 1;
-    //                 }
-    //               }
-    //       }
+        $detailTiket = array();
+        for ($i=0; $i < count($getDetailItem); $i++) {
+          array_push($detailTiket, array(
+            'id_tiket' => $getTiketID[0]->id,
+            'id_item' => $getDetailItem[$i][0]->id
+            ));
+        }
 
-    //       if($a == count($value['id_item'])){
-    //         array_push($stok, array(
-    //             'id_item' => $aItem,
-    //             'stok_input' => $aJumlah
-    //         ));
-    //       }
+        $this->m_data->multiple_insert($detailTiket,'tb_detail_tiket');
 
+        $data = array(
+          'id_tiket' => $getTiketID[0]->id,
+          'payment_method' => $paymentmethod,
+          'deskripsi' => $description,
+          'date' => $date,
+          'status' => 0
+        );
 
-    //       // Get Old Stok Data FROM ITEM Table
-    //       $itemID = array();
-    //       for ($i=0; $i < count($stok); $i++) {
-    //         $itemID[] = array(
-    //           'id'=> $stok[$i]['id_item']
-    //         );
-    //       }
+        // echo '<pre>',print_r($tiket),'</pre>';
+        // echo '<pre>',print_r($item),'</pre>';
+        // echo '<pre>',print_r($getItem),'</pre>';
+        // echo '<pre>',print_r($detailItem),'</pre>';
+        // echo '<pre>',print_r($getDetailItem),'</pre>';
+        // echo '<pre>',print_r($detailTiket),'</pre>';
+        // echo '<pre>',print_r($data),'</pre>';
+        // die;
 
-    //       $itemData = array();
-    //       for ($i=0; $i < count($itemID) ; $i++) {
-    //         $itemData[] = $this->db->select('stok')->get_where('tb_item', $itemID[$i])->result();
-    //       }
-
-
-    //       $resultData = array();
-    //       for ($i=0; $i < count($stok); $i++) {
-    //         array_push($resultData, array(
-    //             'id' => $stok[$i]['id_item'],
-    //             'stok' => $stok[$i]['stok_input'] + $itemData[$i][0]->stok
-    //         ));
-    //       }
+        $this->m_data->input_data($data,'tb_tr_procurement');
+        redirect('Procurement/index');
+    }
 
     function pdf($id){
 
@@ -135,5 +127,4 @@ class Procurement extends CI_Controller{
       $this->pdf->filename = "laporan-petanikode.pdf";
       $this->pdf->load_view('pdf/detail_report_procurement');
     }
-}
 }
