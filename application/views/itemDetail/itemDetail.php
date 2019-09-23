@@ -68,9 +68,7 @@ $this->load->view('partial/head');
                           } elseif ($a->status == 1) {
                             echo "<label class='badge badge-success'>Available</label>";
                           } elseif ($a->status == 2) {
-                            echo "<label class='badge badge-info'>On Request Order</label>";
-                          } elseif ($a->status == 3) {
-                            echo "<label class='badge badge-warning'>On Procurement</label>";
+                            echo "<label class='badge badge-warning'>On Booking</label>";
                           }
                         ?>
                       </td>
@@ -173,7 +171,7 @@ $this->load->view('partial/head');
                                     </div>
                                 </td>
                                 <td scope="col">
-                                  <button onclick='removeRow(this.parentNode.parentNode.rowIndex)' type="button"  class="btn-delete btn btn-danger">
+                                  <button onclick='deleteRow(this.parentNode.parentNode.rowIndex)' type="button"  class="btn-delete btn btn-danger">
                                   <i class="fa fa-times"></i>
                                   </button>
                                 </td>
@@ -285,13 +283,13 @@ $this->load->view('partial/head');
         var assetnumber = "<td scope='col'><div class='form-group'><input type='text' class='form-control' id='serialnumber' name='assetnumber[]' required></div></td>";
         var valueprice = "<td scope='col'><div class='form-group'><input type='text' class='form-control' id='serialnumber' name='valueprice[]' required></div></td>";
         var condition = "<td scope='col'><div class='form-group'><textarea class='form-control' name='condition[]' id='condition'></textarea></div></td>"
-        var action = "<td scope='col'><button onclick='removeRow(this.parentNode.parentNode.rowIndex)' type='button'  class='btn-delete btn btn-danger'><i class='fa fa-times'></i></button></td>"
+        var action = "<td scope='col'><button onclick='deleteRow(this.parentNode.parentNode.rowIndex)' type='button'  class='btn-delete btn btn-danger'><i class='fa fa-times'></i></button></td>"
 
         $(".row-body").append(tr_s + type + serialnumber + assetnumber + valueprice + condition + action + tr_e );
 
-        }
+        };
 
-        function removeRow(i){
+        function deleteRow(i){
             document.getElementById('inputTable').deleteRow(i)
         }
 

@@ -170,10 +170,10 @@ $this->load->view('partial/head');
           var x = $(".z:checked").length;
           document.getElementById("y").value = x;
         };
-        //
-        // $( "selector" ).datepicker({
-        //     dateFormat: "yyyy-mm-dd"
-        // })
+
+        $( "selector" ).datepicker({
+            dateFormat: "yyyy-mm-dd"
+        })
 
       </script>
 

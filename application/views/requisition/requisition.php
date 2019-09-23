@@ -75,12 +75,10 @@ $this->load->view('partial/head');
                       ?>
                     </td>
                     <td scope="col">
-                      <div class="text-center">
-                        <a href="edit/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-edit"></span></a>
-                        <a href="detail/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-eye"></span></a>
-                        <a href="approve/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-check"></span></a>
-                        <a href="decline/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-times"></span></a>
-                      </div>
+                      <a href="edit/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-edit"></span></a>
+                      <a href="detail/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-eye"></span></a>
+                      <a href="approve/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-check"></span></a>
+                      <a href="decline/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-times"></span></a>
                     </td>
                     </tr>
                   <?php } ?>

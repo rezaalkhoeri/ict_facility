@@ -41,10 +41,6 @@ $this->load->view('partial/head');
                   <input type="text" class="form-control" id="ticket" name="ticket" maxlength="15" required>
                 </div>
 
-                <div class="form-group">
-                  <label for="ticket">Input Item</label>
-                <div class="card mb-4 py-3 border-left-success">
-                  <div class="card-body">
                 <!-- inputan table -->
                     <div class="table-responsive">
                       <table class="table table-bordered" id="inputTable" width="100%" cellspacing="0">
@@ -68,22 +64,24 @@ $this->load->view('partial/head');
 
                           <td scope="col">
                               <!-- brand -->
-                              <div class="form-group">
+                              <div id="ticket_feedback" class="form-group">
                               <input type="text" class="form-control" id="brand" name="brand[]" required>
                               </div>
                           </td>
 
                           <td scope="col">
                               <!-- value price -->
-                              <div class="form-group">
+                              <div id="ticket_feedback" class="form-group">
                               <input type="text" class="form-control" id="valueprice" name="valueprice[]" required>
                               </div>
                           </td>
 
                           <td scope="col">
-                            <button onclick='removeRow(this.parentNode.parentNode.rowIndex)' type="button" class="btn-delete btn btn-danger">
+                            <div class="text-center">
+                            <button onclick='deleteRow(this.parentNode.parentNode.rowIndex)' type="button" class="btn-delete btn btn-danger">
                             <i class="fa fa-times"></i>
                             </button>
+                            </div>
                           </td>
 
                           </tr>
@@ -93,9 +91,12 @@ $this->load->view('partial/head');
                     <div class="form-group">
                       <button id="addRow" onclick="myFunction()" type="button"  class="btn btn-info">Add Row</button>
                     </div>
-                  </div>
-                </div>
-              </div>
+
+        			 <!-- description -->
+               <div class="form-group">
+                <label for="description">Description</label>
+                  <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+               </div>
 
                 <!-- payment method -->
                 <div class="form-group">
@@ -110,6 +111,12 @@ $this->load->view('partial/head');
                   <span class="text-warning" ></span>
         			  </div>
 
+              <!-- status -->
+                <div class="form-group">
+                <label for="status">Status</label>
+                <input type="text" class="form-control" name="status" id="status" required>
+                </div>
+
                <!--date-->
         			 <div
         			 class="form-group">
@@ -117,12 +124,6 @@ $this->load->view('partial/head');
         			 <input type="date" name="date" id="actualDate">
         			 <span class="text-warning"></span>
         			 </div>
-
-               <!-- description -->
-               <div class="form-group">
-                <label for="description">Description</label>
-                  <textarea class="form-control" name="description" id="description" rows="3"></textarea>
-               </div>
 
               <!-- button submit-->
               <div class="form-group">
@@ -147,27 +148,17 @@ $this->load->view('partial/head');
       <?php $this->load->view('partial/script'); ?>
       <?php $this->load->view('partial/footer'); ?>
 
+      <script type="text/javascript">
+        window.updateCount = function() {
+          var x = $(".z:checked").length;
+          document.getElementById("y").value = x;
+        };
 
-      <script>
+        $( "selector" ).datepicker({
+            dateFormat: "yyyy-mm-dd"
+        })
 
-          function myFunction() {
-
-            var tr_s = "<tr id='row'>";
-            var tr_e = "</tr>";
-            var type = "<td scope='col' width='200px'><div class='form-group'><input type='text' class='form-control' id='type' name='type[]' required></div></td>";
-            var brand = "<td scope='col'><div class='form-group'><input type='text' class='form-control' id='brand' name='brand[]' required></div></td>";
-            var valueprice = "<td scope='col'><div class='form-group'><input type='text' class='form-control' id='serialnumber' name='valueprice[]' required></div></td>";
-            var action = "<td scope='col'><button onclick='removeRow(this.parentNode.parentNode.rowIndex)' type='button'  class='btn-delete btn btn-danger'><i class='fa fa-times'></i></button></td>"
-
-            $(".row-body").append(tr_s + type + brand + valueprice + action + tr_e );
-
-            };
-
-            function removeRow(i){
-                document.getElementById('inputTable').deleteRow(i)
-            }
-
-          </script>
+      </script>
 
     </div>
   </div>
