@@ -98,6 +98,12 @@ class M_data extends CI_Model{
         return $query;
     }
 
+    function join_table_distribution_tiket(){
+        $sql = "SELECT tb_tr_requisition.*, tb_tiket.no_tiket FROM tb_tr_requisition JOIN tb_tiket ON tb_tiket.id = tb_tr_requisition.id_tiket where tb_tr_requisition.status = 1 ";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
     // SINGLE INSERT DATA
     function input_data($data, $table){
         $this->db->insert($table, $data);

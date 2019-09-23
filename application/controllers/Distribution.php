@@ -19,7 +19,7 @@ class Distribution extends CI_Controller{
     }
 
     function index_input(){
-        $data['item'] = $this->m_data->join_table_distribution()->result();
+        $data['get'] = $this->m_data->join_table_distribution_tiket()->result();
         $title['title'] = 'Distribution Form';
         $this->load->view('Distribution/distribution_input', $data);
     }
