@@ -70,9 +70,8 @@ class M_data extends CI_Model{
         $sql = "SELECT tb_tr_procurement.*, tb_item.jenis, tb_item.merek, tb_detail_item.value_price, tb_tiket.no_tiket
         FROM tb_tr_procurement JOIN tb_tiket ON tb_tr_procurement.id_tiket = tb_tiket.id
         JOIN tb_detail_tiket ON tb_tiket.id = tb_detail_tiket.id_tiket
-        JOIN tb_detail_item ON tb_detail_tiket.id_item = tb_detail_item.id
-        JOIN tb_item ON tb_detail_item.id_item = tb_item.id
-        where tb_tr_procurement.id = ".$id;
+        JOIN tb_item ON tb_detail_tiket.id_item = tb_item.id
+        JOIN tb_detail_item ON tb_item.id = tb_detail_item.id_item where tb_tr_procurement.id = ".$id;
         $query = $this->db->query($sql);
         return $query;
     }
