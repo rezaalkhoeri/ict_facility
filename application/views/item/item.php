@@ -42,30 +42,36 @@ $this->load->view('partial/head');
                       <th scope="col">Type</th>
                       <th scope="col">Brand</th>
                       <th scope="col">Stock</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody id="posTable" >
                   <?php
-                  foreach ($get as $a) {
-                    # code...
-                    ?>
-
+                  foreach ($get as $a) { ?>
                     <tr>
-                    <td scope="col"><?= $a->jenis?></td>
-                    <td scope="col"><?= $a->merek?></td>
-                    <td scope="col"><?= $a->stok?> Unit </td>
-                    <td scope="col">
-                        <div class="text-center">
-                        <a href="#" data-toggle="modal" data-target="#edit<?php echo $a->id ?>"><span class="badge badge-primary">
-                        <i class="far fa-edit"></i> Edit</span></a>
-                        </div>
+                      <td scope="col"><?= $a->jenis?></td>
+                      <td scope="col"><?= $a->merek?></td>
+                      <td scope="col"><?= $a->stok?> Unit </td>
+                      <td scope="col">
+                        <?php
+                          if ($a->status == 0){
+                            echo "<label class='badge badge-warning'>On Procurement</label>";
+                          } elseif ($a->status == 1) {
+                            echo "<label class='badge badge-success'>Already Item</label>";
+                          }
+                        ?>
+                      </td>
+                      <td scope="col">
+                          <div class="text-center">
+                          <a href="#" data-toggle="modal" data-target="#edit<?php echo $a->id ?>"><span class="badge badge-primary">
+                          <i class="far fa-edit"></i> Edit</span></a>
+                          </div>
 
-                        <!-- <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a> -->
-                    </td>
+                          <!-- <a href="hapus/<?php echo $a->id ?>"><span class="badge badge-danger">Delete</span></a> -->
+                      </td>
                     </tr>
-                  <?php }
-                  ?>
+                  <?php } ?>
                   </tbody>
                 </table>
               </div>

@@ -45,10 +45,10 @@ $this->load->view('partial/head');
               		<thead>
                     <tr>
                       <th scope="col">Ticket</th>
-                      <th scope="col">Description</th>
                       <th scope="col">Payment Method</th>
-                      <th scope="col">Status</th>
+                      <th scope="col">Description</th>
                       <th scope="col">Date</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Action</th>
 
                     </tr>
@@ -59,23 +59,24 @@ $this->load->view('partial/head');
                   ?>
                     <tr>
                     <td scope="col"><?= $a->no_tiket?></td>
-                    <td scope="col"><?= $a->deskripsi?></td>
                     <td scope="col"><?= $a->payment_method?></td>
-                    <td scope="col"><?= $a->status?></td>
+                    <td scope="col"><?= $a->deskripsi?></td>
                     <td scope="col"><?= $a->date?></td>
-                    <?php
-                      if ($this->session->userdata('role_id') == 2 || $this->session->userdata('role_id') == 3) {
-                    ?>
+                    <td scope="col">
+                      <?php
+                        if ($a->status == 0){
+                          echo "<label class='badge badge-warning'>Pending</label>";
+                        } elseif ($a->status == 1) {
+                          echo "<label class='badge badge-success'>Accept</label>";
+                        } elseif ($a->status == 2) {
+                          echo "<label class='badge badge-danger'>Decline</label>";
+                        }
+                      ?>
+                    </td>
                       <td scope="col">
                           <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary"><i class="fas fa-info"></i> Detail</span></a>
                           <a href="#"><span class="badge badge-success"><i class="fas fa-check-double"></i> Approve</span></a>
                       </td>
-                    <?php } else { ?>
-                      <td scope="col">
-                          <a href="<?= base_url('Procurement/details/'.$a->id) ?>"><span class="badge badge-primary"><i class="fas fa-info"></i> Details</span></a>
-                      </td>
-                    <?php } ?>
-
                     </tr>
                   <?php } ?>
 
