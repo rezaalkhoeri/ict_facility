@@ -26,10 +26,9 @@ class Procurement extends CI_Controller{
     }
 
     function details($id){
-        $data['get'] = $this->m_data->join_table_detail_procurement($id)->result();
-        // print_r($data);
-        // die;
         $data['title'] = 'Procurement Form';
+        $data['get'] = $this->m_data->join_table_detail_procurement($id)->result();
+        $data['item_detail'] = $this->m_data->join_table_procurement_item($id)->result();
         $this->load->view('Procurement/procurement_details',$data);
 
     }
@@ -119,12 +118,53 @@ class Procurement extends CI_Controller{
         redirect('Procurement/index');
     }
 
+    function approve($id)
+    {
+      $detailItem = $this->m_data->join_table_requisition_item($id)->result();
+      $itemID = array();
+      foreach ($detailItem as $a) {
+        array_push($itemID, array(
+          'id_item' => $a->id_item,
+          'status' => 0
+        ));
+      }
+
+      $where = array('id' => $id);
+      $data = array('status' => 1);
+
+      $this->m_data->multiple_update('tb_detail_item', $itemID,'id_item');
+      $this->m_data->update_data($where, $data, 'tb_tr_requisition');
+      redirect('Requisition/index');
+    }
+
+    function decline($id)
+    {
+      $detailItem = $this->m_data->join_table_requisition_item($id)->result();
+      $itemID = array();
+      foreach ($detailItem as $a) {
+        array_push($itemID, array(
+          'id_item' => $a->id_item,
+          'status' => 1
+        ));
+      }
+
+      $where = array('id' => $id);
+      $data = array('status' => 2);
+
+      $this->m_data->multiple_update('tb_detail_item', $itemID,'id_item');
+      $this->m_data->update_data($where, $data, 'tb_tr_requisition');
+      redirect('Requisition/index');
+    }
+
     function pdf($id){
+      $data['tanggal'] = tanggal();
+      $data['item_detail'] = $this->m_data->join_table_procurement_item($id)->result();
+      $data['get'] = $this->m_data->join_table_detail_procurement($id)->result();
 
       $this->load->library('pdf');
 
       $this->pdf->setPaper('A4', 'potrait');
-      $this->pdf->filename = "laporan-petanikode.pdf";
-      $this->pdf->load_view('pdf/detail_report_procurement');
+      $this->pdf->filename = "Surat Permohonan Pengadaan Asset ICT.pdf";
+      $this->pdf->load_view('pdf/proc_permohonan', $data);
     }
 }

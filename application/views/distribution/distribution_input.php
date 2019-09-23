@@ -183,7 +183,7 @@ $this->load->view('partial/head');
                               </td>
                               <td scope="col">
                                 <div class="text-center">
-                                <button type="button" id="btnSave" class="btn btn-primary" value="<?= $a->no_tiket ?>" onClick="ticketing(this.value)">Save changes</button>
+                                <button type="button" id="btnSave" class="btn btn-primary" value="<?= $a->no_tiket ?>" onClick="ticketing(this.value)"><i class="fas fa-check"></i></button>
                                 </div>
                               </td>
                               </tr>
