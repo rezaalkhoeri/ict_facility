@@ -110,7 +110,8 @@ class ItemDetail extends CI_Controller
           for ($i=0; $i < count($stok); $i++) {
             array_push($resultData, array(
                 'id' => $stok[$i]['id_item'],
-                'stok' => $stok[$i]['stok_input'] + $itemData[$i][0]->stok
+                'stok' => $stok[$i]['stok_input'] + $itemData[$i][0]->stok,
+                'status' => 1
             ));
           }
 
