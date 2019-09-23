@@ -67,15 +67,21 @@ $this->load->view('partial/head');
                         if ($a->status == 0){
                           echo "<label class='badge badge-warning'>Pending</label>";
                         } elseif ($a->status == 1) {
-                          echo "<label class='badge badge-success'>Accept</label>";
+                          echo "<label class='badge badge-secondary'>On Procurement Process</label>";
                         } elseif ($a->status == 2) {
                           echo "<label class='badge badge-danger'>Decline</label>";
+                        } elseif ($a->status ==3) {
+                          echo "<label class='badge badge-success'>Available</label>";
                         }
                       ?>
                     </td>
                       <td scope="col">
                         <div class="text-center">
-                        <!-- <a href="edit/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-edit"></span></a> -->
+                        <?php
+                        if ($a->status == 1){
+                              echo "<a href='update_item/".$a->id."' class='badge badge-primary  btn-xs'><span class='fa fa-edit'></span></a>";
+                        } ?>
+  
                         <a href="details/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-eye"></span></a>
                         <a href="approve/<?php echo $a->id ?>" class="badge badge-success btn-xs"><span class="fa fa-check"></span></a>
                         <a href="decline/<?php echo $a->id ?>" class="badge badge-danger btn-xs"><span class="fa fa-times"></span></a>

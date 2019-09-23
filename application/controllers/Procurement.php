@@ -33,6 +33,44 @@ class Procurement extends CI_Controller{
 
     }
 
+    function update_item($id){
+      $data['title'] = 'Procurement Form';
+      $data['get'] = $this->m_data->join_table_detail_procurement($id)->result();
+      $data['item_detail'] = $this->m_data->join_table_procurement_item($id)->result();
+      $this->load->view('Procurement/procurement_edit', $data);
+    }
+
+    function update_item_action($id){
+      $itemID = $this->input->post('id_item');
+      $serialnumber = $this->input->post('serialnumber');
+      $assetnumber = $this->input->post('assetnumber');
+
+      $detailItem = array();
+        for ($i=0; $i < count($serialnumber) ; $i++) {
+          array_push($detailItem, array(
+            'id' => $itemID[$i],
+            'serial_number' => $serialnumber[$i],
+            'asset_number' => $assetnumber[$i],
+            'status' => 1
+          ));
+        }
+      
+      $where = array('id' => $id);
+      $data = array('status' => 3);
+
+      // echo '<pre>',print_r($detailItem),'</pre>';
+    // die;
+
+      $this->m_data->multiple_update('tb_detail_item', $detailItem,'id');
+      $this->m_data->update_data($where, $data, 'tb_tr_procurement');
+      redirect('Procurement/index');
+    }
+
+    public function create_req()
+    {
+
+    }
+
     public function tambah_aksi()
     {
         // Get Input Data
@@ -97,22 +135,21 @@ class Procurement extends CI_Controller{
 
         $this->m_data->multiple_insert($detailTiket,'tb_detail_tiket');
 
+        $first = "ICT";
+        $name  = "PDSI";
+        $date = Date('dmY');
+        $reqCode = "PROC";
+        $reqTiket = $tiket['no_tiket'];
+        $kode = $name.'/'.$first.'/'.$date.'/'.$reqCode.'/'.$reqTiket;
+
         $data = array(
           'id_tiket' => $getTiketID[0]->id,
+          'transactionCode' => $kode,
           'payment_method' => $paymentmethod,
           'deskripsi' => $description,
           'date' => $date,
           'status' => 0
         );
-
-        // echo '<pre>',print_r($tiket),'</pre>';
-        // echo '<pre>',print_r($item),'</pre>';
-        // echo '<pre>',print_r($getItem),'</pre>';
-        // echo '<pre>',print_r($detailItem),'</pre>';
-        // echo '<pre>',print_r($getDetailItem),'</pre>';
-        // echo '<pre>',print_r($detailTiket),'</pre>';
-        // echo '<pre>',print_r($data),'</pre>';
-        // die;
 
         $this->m_data->input_data($data,'tb_tr_procurement');
         redirect('Procurement/index');
@@ -120,40 +157,47 @@ class Procurement extends CI_Controller{
 
     function approve($id)
     {
-      $detailItem = $this->m_data->join_table_requisition_item($id)->result();
+      $detailItem = $this->m_data->join_table_procurement_item($id)->result();
+
       $itemID = array();
       foreach ($detailItem as $a) {
         array_push($itemID, array(
-          'id_item' => $a->id_item,
-          'status' => 0
+          'id' => $a->id_item,
+          'status' => 4
         ));
       }
+
+    // echo '<pre>',print_r($itemID),'</pre>';
+    // die;
+
 
       $where = array('id' => $id);
       $data = array('status' => 1);
 
-      $this->m_data->multiple_update('tb_detail_item', $itemID,'id_item');
-      $this->m_data->update_data($where, $data, 'tb_tr_requisition');
-      redirect('Requisition/index');
+      $this->m_data->multiple_update('tb_detail_item', $itemID,'id');
+      $this->m_data->update_data($where, $data, 'tb_tr_procurement');
+      redirect('Procurement/index');
     }
 
     function decline($id)
     {
-      $detailItem = $this->m_data->join_table_requisition_item($id)->result();
+      $detailItem = $this->m_data->join_table_procurement_item($id)->result();
       $itemID = array();
       foreach ($detailItem as $a) {
         array_push($itemID, array(
           'id_item' => $a->id_item,
-          'status' => 1
+          'status' => 5
         ));
       }
-
+      
       $where = array('id' => $id);
       $data = array('status' => 2);
-
+      // var_dump($itemID);
+      // die;
+      
       $this->m_data->multiple_update('tb_detail_item', $itemID,'id_item');
-      $this->m_data->update_data($where, $data, 'tb_tr_requisition');
-      redirect('Requisition/index');
+      $this->m_data->update_data($where, $data, 'tb_tr_procurement');
+      redirect('Procurement/index');
     }
 
     function pdf($id){
