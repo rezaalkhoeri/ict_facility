@@ -46,9 +46,9 @@
           </div>
         </div>
 
-	    <!-- recepient -->
+	    <!-- Recipient -->
         <div class="form-group row">
-        <label for="recepient" class="col-sm-2 col-form-label">Recepient</label>
+        <label for="Recipient" class="col-sm-2 col-form-label">Recipient</label>
         <div class="col-sm-10">
         <input type="text" readonly class="form-control-plaintext" id="recepient" name="recepient" value="<?= $d->recepient?>">
         </div>

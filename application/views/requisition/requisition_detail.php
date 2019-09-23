@@ -57,7 +57,7 @@ $this->load->view('partial/head');
                     <td style="text-align: left;"><?= $a->requestor ?></td>
                   </tr>
                   <tr>
-                    <td style="text-align: left;">Tanggal</td>
+                    <td style="text-align: left;">Date</td>
                     <td style="text-align: center;">:</td>
                     <td style="text-align: left;"><?= $a->date ?></td>
                   </tr>
@@ -109,7 +109,7 @@ $this->load->view('partial/head');
             <div class="card-body">
               <div class="form-group">
                 <?php foreach ($get as $a){ ?>
-                  <a class="btn btn-warning" href="<?= base_url('Requisition/pdf/'.$a->id)?>" target="_blank"> <i class="fa fa-print"></i> Cetak Surat Pengajuan </a>
+                  <a class="btn btn-warning" href="<?= base_url('Requisition/pdf/'.$a->id)?>" target="_blank"> <i class="fa fa-print"></i> Print </a>
                 <?php } ?>
               </div>
             </div>

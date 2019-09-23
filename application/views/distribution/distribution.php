@@ -45,7 +45,7 @@ $this->load->view('partial/head');
               		<thead>
                     <tr>
                       <th scope="col">Receipt Number</th>
-                      <th scope="col">Recepient</th>
+                      <th scope="col">Recipient</th>
                       <th scope="col">Giver</th>
                       <th scope="col">Location</th>
                       <th scope="col">Date</th>
@@ -61,7 +61,7 @@ $this->load->view('partial/head');
                   ?>
                     <tr>
                     <td scope="col"><?= $a->receipt_number?></td>
-                    <td scope="col"><?= $a->recepient?></td>
+                    <td scope="col"><?= $a->Recipient?></td>
                     <td scope="col"><?= $a->giver?></td>
                     <td scope="col"><?= $a->nama_lokasi?></td>
                     <td scope="col"><?= $a->date?></td>
