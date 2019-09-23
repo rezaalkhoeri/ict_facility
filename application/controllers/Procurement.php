@@ -59,7 +59,7 @@ class Procurement extends CI_Controller{
               'jenis' => $jenis[$i],
               'merek' => $merek[$i],
               'stok' => 0,
-              'status' => 0
+              'status' => 2
             ));
         }
 

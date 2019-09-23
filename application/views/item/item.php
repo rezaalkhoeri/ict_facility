@@ -56,9 +56,11 @@ $this->load->view('partial/head');
                       <td scope="col">
                         <?php
                           if ($a->status == 0){
-                            echo "<label class='badge badge-warning'>On Procurement</label>";
+                            echo "<label class='badge badge-danger'>Out Of Stock</label>";
                           } elseif ($a->status == 1) {
                             echo "<label class='badge badge-success'>Already Item</label>";
+                          } elseif ($a->status == 2) {
+                            echo "<label class='badge badge-warning'>On Procurement</label>";
                           }
                         ?>
                       </td>
