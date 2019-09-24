@@ -71,6 +71,12 @@ $this->load->view('partial/head');
                           echo "<label class='badge badge-success'>Accept</label>";
                         } elseif ($a->status == 2) {
                           echo "<label class='badge badge-danger'>Decline</label>";
+                        } elseif ($a->status == 3) {
+                          echo "<label class='badge badge-info'>Handover</label>";
+                        } elseif ($a->status == 4) {
+                          echo "<label class='badge badge-secondary'>Distributed</label>";
+                        } elseif ($a->status == 5) {
+                          echo "<label class='badge badge-danger'>Canceled</label>";
                         }
                       ?>
                     </td>

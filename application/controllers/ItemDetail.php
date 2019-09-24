@@ -20,7 +20,7 @@ class ItemDetail extends CI_Controller
 
         // print_r($data);
 
-        $data['type'] = $this->m_data->tampil_data_item('tb_item','jenis')->result();
+        $data['type'] = $this->m_data->tampil_data_sort('tb_item','jenis')->result();
         $data['title'] = 'Asset Management | Item Details';
         $this->load->view('itemDetail/itemDetail', $data);
     }

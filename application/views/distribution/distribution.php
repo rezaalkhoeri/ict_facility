@@ -23,7 +23,7 @@ $this->load->view('partial/head');
       <?php
           $this->load->view('partial/topbar');
         ?>
-        
+
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -44,15 +44,14 @@ $this->load->view('partial/head');
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               		<thead>
                     <tr>
-                      <th scope="col">Receipt Number</th>
+                      <th scope="col">Requisition Number</th>
                       <th scope="col">Recipient</th>
                       <th scope="col">Giver</th>
                       <th scope="col">Location</th>
                       <th scope="col">Date</th>
-                      <th scope="col">Status</th>
                       <th scope="col">Description</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Action</th>
-
                     </tr>
                   </thead>
                   <tbody id="posTable" >
@@ -60,26 +59,41 @@ $this->load->view('partial/head');
                   foreach ($get as $a) {
                   ?>
                     <tr>
-                    <td scope="col"><?= $a->receipt_number?></td>
-                    <td scope="col"><?= $a->Recipient?></td>
+                    <td scope="col"><?= $a->no_tiket?></td>
+                    <td scope="col"><?= $a->recipient?></td>
                     <td scope="col"><?= $a->giver?></td>
                     <td scope="col"><?= $a->nama_lokasi?></td>
                     <td scope="col"><?= $a->date?></td>
-                    <td scope="col"><?= $a->status?></td>
                     <td scope="col"><?= $a->deskripsi?></td>
-                    <?php
-                      if ($this->session->userdata('role_id') == 2 || $this->session->userdata('role_id') == 3) {
-                    ?>
-                      <td scope="col">
-                          <a href="<?= base_url('Distribution/details/'.$a->id) ?>"><span class="badge badge-primary"><i class="fas fa-info">Details</span></a>
-                          <a href="#"><span class="badge badge-success"><i class="fas fa-check-double"></i>Approve</span></a>
-                      </td>
-                    <?php } else { ?>
-                      <td scope="col">
-                          <a href="<?= base_url('Distribution/details/'.$a->id) ?>"><span class="badge badge-primary"><i class="fas fa-info">Details</span></a>
-                      </td>
-                    <?php } ?>
+                    <td scope="col">
+                      <?php
+                        if ($a->status == 0){
+                          echo "<label class='badge badge-warning'>Hold</label>";
+                        } elseif ($a->status == 1) {
+                          echo "<label class='badge badge-info'>Handover</label>";
+                        } elseif ($a->status == 2) {
+                          echo "<label class='badge badge-secondary'>Distributed</label>";
+                        } elseif ($a->status == 3) {
+                          echo "<label class='badge badge-danger'>Canceled</label>";
+                        }
+                      ?>
+                    </td>
+                    <td scope="col">
+                      <div class="text-center">
+                        <a href="detail/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-eye"></span></a>
 
+                        <?php
+                        if ($a->status == 0){
+                          echo "<a href='handover/".$a->id."' class='badge badge-success btn-xs'><span class='fa fa-handshake'></span></a>";
+                        } elseif ($a->status == 1) {
+                          echo "<a href='distribute/".$a->id."' class='badge badge-success btn-xs'><span class='fas fa-truck'></span></a>";
+                        }
+
+                        ?>
+
+                        <a href="canceled/<?php echo $a->id ?>" class="badge badge-danger btn-xs"><span class="fa fa-times"></span></a>
+                      </div>
+                    </td>
                     </tr>
                   <?php } ?>
 
@@ -104,4 +118,3 @@ $this->load->view('partial/head');
 
 </body>
 </html>
-

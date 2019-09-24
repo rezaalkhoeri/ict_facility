@@ -38,7 +38,7 @@ $this->load->view('partial/head');
                 <!-- receipt number -->
                 <div class="form-group">
                   <label for="receiptnumber">Receipt number</label>
-                  <input type="text" class="form-control" id="receiptnumber" name="receiptnumber" disabled>
+                  <input type="text" value="<?php echo $kode; ?>" class="form-control" id="receiptnumber" name="receiptnumber" readonly>
                 </div>
 
                 <!-- ticket -->
@@ -48,7 +48,7 @@ $this->load->view('partial/head');
                     <div class="input-group-prepend">
                       <button class="btn btn-outline-secondary" type="button" id="button-addon1" data-toggle="modal" data-target="#extraLargeModal">Select</button>
                     </div>
-                  <input id="noTicket" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                  <input id="noTicket" name="ticket" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" readonly>
                 </div>
                 </div>
 
@@ -67,20 +67,17 @@ $this->load->view('partial/head');
               <!-- location -->
                 <div class="form-group">
                 <label for="location">Location</label>
-                <input type="text" class="form-control" name="location" id="location" required>
+                <select class="form-control" name="location">
+                  <?php foreach ($location as $a) { ?>
+                    <option value="<?php echo $a->id; ?>"> <?php echo $a->nama_lokasi." | ".$a->deskripsi; ?> </option>
+                  <?php } ?>
+                </select>
                 </div>
 
                <!--date-->
         			 <div class="form-group">
         			 <label for="date">Date</label><br/>
         			 <input type="date" name="date" id="actualDate">
-        			 <span class="text-warning"></span>
-        			 </div>
-
-               <!--status-->
-        			 <div class="form-group">
-        			 <label for="status">Status</label><br/>
-        			 <input type="status" name="status" id="status">
         			 <span class="text-warning"></span>
         			 </div>
 

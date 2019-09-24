@@ -16,7 +16,7 @@ class Item extends CI_Controller
 
     public function index()
     {
-        $data['get'] = $this->m_data->tampil_data_item('tb_item','jenis')->result();
+        $data['get'] = $this->m_data->tampil_data_sort('tb_item','jenis')->result();
         $data['title'] = 'Asset Management | Items';
         $this->load->view('Item/item', $data);
     }

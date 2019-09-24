@@ -16,7 +16,7 @@ class M_data extends CI_Model{
     }
 
     // GET DATA ITEM ORDER BY
-    function tampil_data_item($table, $column){
+    function tampil_data_sort($table, $column){
         $this->db->order_by($column,'ASC');
         $query = $this->db->get($table);
         return $query;
@@ -87,30 +87,48 @@ class M_data extends CI_Model{
 
     // DISTRIBUTION
     function join_table_distribution(){
-        $sql = "SELECT tb_tr_distribution.*, tb_lokasi.nama_lokasi
-        FROM tb_tr_distribution JOIN tb_lokasi ON tb_tr_distribution.id_lokasi = tb_lokasi.id
-         ";
+        $sql = "SELECT tb_tr_distribution.*, tb_lokasi.nama_lokasi, tb_tiket.no_tiket, tb_tr_requisition.cost_center, tb_tr_requisition.quantity
+        FROM tb_tr_distribution
+        JOIN tb_lokasi ON tb_tr_distribution.id_lokasi = tb_lokasi.id
+        JOIN tb_tr_requisition ON tb_tr_requisition.id = tb_tr_distribution.id_requisition
+        JOIN tb_tiket ON tb_tiket.id = tb_tr_requisition.id_tiket ";
         $query = $this->db->query($sql);
         return $query;
     }
 
     function join_table_detail_distribution($id){
-        $sql = "SELECT tb_tr_distribution.*, tb_item.jenis, tb_item.merek, tb_detail_item.serial_number, tb_detail_item.asset_number,
-        tb_detail_item.value_price, tb_detail_tiket.quantity
-        FROM tb_tr_distribution JOIN tb_tr_requisition ON tb_tr_distribution.id_requisition = tb_tr_requisition.id
+        $sql = "SELECT tb_tr_distribution.*, tb_tr_requisition.cost_center, tb_tr_requisition.quantity, tb_tiket.no_tiket
+        FROM tb_tr_distribution
+        JOIN tb_tr_requisition ON tb_tr_distribution.id_requisition = tb_tr_requisition.id
         JOIN tb_tiket ON tb_tr_requisition.id_tiket = tb_tiket.id
-        JOIN tb_detail_tiket ON tb_tiket.id = tb_detail_tiket.id_tiket
-        JOIN tb_item ON tb_detail_tiket.id_item = tb_item.id
-        JOIN tb_detail_item ON tb_item.id = tb_detail_item.id_item";
+        where tb_tr_distribution.id = ".$id;
         $query = $this->db->query($sql);
         return $query;
     }
 
-    function join_table_distribution_tiket(){
-        $sql = "SELECT tb_tr_requisition.*, tb_tiket.no_tiket FROM tb_tr_requisition JOIN tb_tiket ON tb_tiket.id = tb_tr_requisition.id_tiket where tb_tr_requisition.status = 1 ";
+    function join_table_detail_distribution_item($id){
+        $sql = "SELECT tb_tr_distribution.*, tb_item.jenis, tb_item.merek, tb_detail_item.serial_number, tb_detail_item.asset_number,
+        tb_detail_item.value_price, tb_detail_item.condition, tb_tr_requisition.quantity
+        FROM tb_tr_distribution
+        JOIN tb_tr_requisition ON tb_tr_distribution.id_requisition = tb_tr_requisition.id
+        JOIN tb_tiket ON tb_tr_requisition.id_tiket = tb_tiket.id
+        JOIN tb_detail_tiket ON tb_tiket.id = tb_detail_tiket.id_tiket
+        JOIN tb_detail_item ON tb_detail_tiket.id_item = tb_detail_item.id
+        JOIN tb_item ON tb_item.id = tb_detail_item.id_item
+        WHERE tb_tr_distribution.id = ".$id;
         $query = $this->db->query($sql);
         return $query;
     }
+
+    function join_table_distribution_get_req_id($no_tiket){
+        $sql = "SELECT tb_tr_requisition.*, tb_tiket.no_tiket
+                FROM tb_tr_requisition
+                JOIN tb_tiket ON tb_tiket.id = tb_tr_requisition.id_tiket
+                WHERE tb_tiket.no_tiket = '$no_tiket'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
 
     // SINGLE INSERT DATA
     function input_data($data, $table){

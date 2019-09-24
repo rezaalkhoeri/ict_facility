@@ -20,9 +20,8 @@ class Procurement extends CI_Controller{
     }
 
     function index_input(){
-        $title['title'] = 'Procurement Form';
-        $this->load->view('Procurement/procurement_input');
-
+        $data['title'] = 'Procurement Form';
+        $this->load->view('Procurement/procurement_input', $data);
     }
 
     function details($id){
@@ -54,7 +53,7 @@ class Procurement extends CI_Controller{
             'status' => 1
           ));
         }
-      
+
       $where = array('id' => $id);
       $data = array('status' => 3);
 
@@ -189,12 +188,12 @@ class Procurement extends CI_Controller{
           'status' => 5
         ));
       }
-      
+
       $where = array('id' => $id);
       $data = array('status' => 2);
       // var_dump($itemID);
       // die;
-      
+
       $this->m_data->multiple_update('tb_detail_item', $itemID,'id_item');
       $this->m_data->update_data($where, $data, 'tb_tr_procurement');
       redirect('Procurement/index');

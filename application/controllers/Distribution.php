@@ -6,6 +6,9 @@ class Distribution extends CI_Controller{
         parent::__construct();
         $this->load->model('m_data');
         $this->load->helper('url');
+        $this->load->helper('tanggal');
+        $this->load->helper('date');
+
         if (!$this->session->userdata('email'))
         {
             redirect('auth');
@@ -19,42 +22,115 @@ class Distribution extends CI_Controller{
     }
 
     function index_input(){
-        $data['get'] = $this->m_data->join_table_distribution_tiket()->result();
-        $title['title'] = 'Distribution Form';
+        $data['get'] = $this->m_data->join_table_requisition()->result();
+        $data['location'] = $this->m_data->tampil_data_sort('tb_lokasi','nama_lokasi')->result();
+        $data['title'] = 'Distribution Form';
+
+        $first = "ICT";
+        $name  = "PDSI";
+        $date = Date('dmY');
+        $reqCode = "DSTRB";
+        $noUrut = rand(0,999999);
+        $kode = $name.'/'.$first.'/'.$date.'/'.$reqCode.'/'.$noUrut;
+        $data['kode'] = $kode;
+
         $this->load->view('Distribution/distribution_input', $data);
     }
-    
-    function details($id){
-        $data['get'] = $this->m_data->join_table_detail_distribution($id)->result();
 
-        $title['title'] = 'Distribution Form';
-        $this->load->view('templates/index_sidebar2', $title);
-        $this->load->view('Distribution/distribution_details', $data);
-        $this->load->view('templates/index_footer');
+    function detail($id){
+      $data['get'] = $this->m_data->join_table_detail_distribution($id)->result();
+      $data['item_detail'] = $this->m_data->join_table_detail_distribution_item($id)->result();
+      $data['title'] = 'Asset Management | Distribution';
+      $this->load->view('Distribution/distribution_details', $data);
     }
 
     function tambah_aksi(){
         $ticket = $this->input->post('ticket');
         $receiptnumber = $this->input->post('receiptnumber');
-        $item = $this->input->post('item');
+        $recipient = $this->input->post('recipient');
+        $giver = $this->input->post('giver');
         $date = $this->input->post('date');
         $location = $this->input->post('location');
-        $status = $this->input->post('status');
         $description = $this->input->post('description');
-        $uploadreceiptdoc = $this->input->post('uploadreceiptdoc');
+
+        $timestamp = strtotime($date);
+        $acttualDate = date("Y-m-d", $timestamp);
+
+        $data['tiket'] = $this->m_data->join_table_distribution_get_req_id($ticket)->result();
 
         $data = array(
-            'ticket' => $ticket,
-            'receiptnumber' => $receiptnumber,
-            'item' => $item,
-            'date' => $date,
-            'location' => $location,
-            'status' => $status,
-            'description' => $description,
-            'uploadreceiptdoc' => $uploadreceiptdoc
+            'id_requisition' => $data['tiket'][0]->id,
+            'transactionCode' => $receiptnumber,
+            'id_lokasi' => $location,
+            'recipient' => $recipient,
+            'giver' => $giver,
+            'date' => $acttualDate,
+            'status' => 0,
+            'deskripsi' => $description,
         );
-        $this->m_data->input_data($data, 'distribution');
+
+        $this->m_data->input_data($data, 'tb_tr_distribution');
         redirect('Distribution/index');
-        
     }
+
+    function handover($id)
+    {
+      $data['get'] = $this->m_data->join_table_detail_distribution($id)->result();
+      $ReqID = $data['get'][0]->id_requisition;
+
+      $where_req = array('id' => $ReqID);
+      $req = array('status' => 3);
+
+      $where = array('id' => $id);
+      $data = array('status' => 1);
+
+      $this->m_data->update_data($where, $data, 'tb_tr_distribution');
+      $this->m_data->update_data($where_req, $req, 'tb_tr_requisition');
+      redirect('Distribution/index');
+    }
+
+    function distribute($id)
+    {
+      $data['get'] = $this->m_data->join_table_detail_distribution($id)->result();
+      $ReqID = $data['get'][0]->id_requisition;
+
+      $where_req = array('id' => $ReqID);
+      $req = array('status' => 4);
+
+      $where = array('id' => $id);
+      $data = array('status' => 2);
+
+      $this->m_data->update_data($where, $data, 'tb_tr_distribution');
+      $this->m_data->update_data($where_req, $req, 'tb_tr_requisition');
+      redirect('Distribution/index');
+    }
+
+    function canceled($id)
+    {
+      $data['get'] = $this->m_data->join_table_detail_distribution($id)->result();
+      $ReqID = $data['get'][0]->id_requisition;
+
+      $where_req = array('id' => $ReqID);
+      $req = array('status' => 5);
+
+      $where = array('id' => $id);
+      $data = array('status' => 3);
+
+      $this->m_data->update_data($where, $data, 'tb_tr_distribution');
+      $this->m_data->update_data($where_req, $req, 'tb_tr_requisition');
+      redirect('Distribution/index');
+    }
+
+    function pdf($id){
+      $data['tanggal'] = tanggal();
+      $data['get'] = $this->m_data->join_table_distribution()->result();
+      $data['item_detail'] = $this->m_data->join_table_detail_distribution($id)->result();
+
+      $this->load->library('pdf');
+
+      $this->pdf->setPaper('A4', 'potrait');
+      $this->pdf->filename = "Surat Serah Terima Asset ICT.pdf";
+      $this->pdf->load_view('pdf/serah_terima_distribution', $data);
+    }
+
 }
