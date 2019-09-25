@@ -20,7 +20,7 @@ class ItemDetail extends CI_Controller
 
         // print_r($data);
 
-        $data['type'] = $this->m_data->tampil_data_item('tb_item','jenis')->result();
+        $data['type'] = $this->m_data->tampil_data_sort('tb_item','jenis')->result();
         $data['title'] = 'Asset Management | Item Details';
         $this->load->view('itemDetail/itemDetail', $data);
     }
@@ -110,7 +110,8 @@ class ItemDetail extends CI_Controller
           for ($i=0; $i < count($stok); $i++) {
             array_push($resultData, array(
                 'id' => $stok[$i]['id_item'],
-                'stok' => $stok[$i]['stok_input'] + $itemData[$i][0]->stok
+                'stok' => $stok[$i]['stok_input'] + $itemData[$i][0]->stok,
+                'status' => 1
             ));
           }
 

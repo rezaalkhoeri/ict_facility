@@ -1,200 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<?php
+$this->load->view('partial/head');
+?>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <?php
+        $this->load->view('partial/sidebar');
+    ?>
+
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
       <!-- Main Content -->
       <div id="content">
 
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <?php
+          $this->load->view('partial/topbar');
+        ?>
 
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-
-            <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
-
-                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <img class="img-responsive animated--grow-in" width="240px" height="70px" src="<?= base_url('assets/img/pdsibaru.jpg');?>">
-                </div>
-              </a>
-              
-            </li>
-
-          </ul>
-
-        </nav>
-        <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800 font-weight-bold">Distribution | Details</h1>
-          <?php foreach ($get as $d) { ?>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Detail Distribution</h6>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <table style="margin-top:20px; float:left;" width="60%" border="0" cellpadding="2" cellspacing="0" align="center">
+                  <?php foreach ($get as $a){ ?>
+                  <tr>
+                    <td style="text-align: left;">No. Ticket</td>
+                    <td style="text-align: center;">:</td>
+                    <td style="text-align: left;"><?= $a->no_tiket ?></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;">Transaction Code</td>
+                    <td style="text-align: center;">:</td>
+                    <td style="text-align: left;"><?= $a->transactionCode ?></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;">Cost Center</td>
+                    <td style="text-align: center;">:</td>
+                    <td style="text-align: left;"><?= $a->cost_center ?></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;">Recipient</td>
+                    <td style="text-align: center;">:</td>
+                    <td style="text-align: left;"><?= $a->recipient ?></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;">Giver</td>
+                    <td style="text-align: center;">:</td>
+                    <td style="text-align: left;"><?= $a->giver ?></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;">Date</td>
+                    <td style="text-align: center;">:</td>
+                    <td style="text-align: left;"><?= $a->date ?></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;">Quantity</td>
+                    <td style="text-align: center;">:</td>
+                    <td style="text-align: left;"><?= $a->quantity ?></td>
+                  </tr>
 
-        <form action="<?= base_url('Distribution/details/'.$d->id);?>" method="post">
+                  <?php } ?>
 
-       <!-- receipt number -->
-        <div class="form-group row">
-          <label for="receiptnumber" class="col-sm-2 col-form-label">Receipt Number</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="receiptnumber`" name="receiptnumber`" value="<?= $d->receipt_number?>">
+                </table>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+
+                <table class="table table-bordered table-hover tablesorter">
+                  <thead>
+                    <tr>
+                      <th class="header">No. <i class="fa fa-sort"></i></th>
+                      <th class="header">Type <i class="fa fa-sort"></i></th>
+                      <th class="header">Brand <i class="fa fa-sort"></i></th>
+                      <th class="header">Serial Number <i class="fa fa-sort"></i></th>
+                      <th class="header">Asset Number <i class="fa fa-sort"></i></th>
+                      <th class="header">Value Price <i class="fa fa-sort"></i></th>
+                      <th class="header">Condition <i class="fa fa-sort"></i></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                      $no = 1;
+                      foreach ($item_detail as $a){
+                    ?>
+                    <tr>
+                      <td><?= $no++ ?></td>
+                      <td><?= $a->jenis ?></td>
+                      <td><?= $a->merek ?></td>
+                      <td><?= $a->serial_number ?></td>
+                      <td><?= $a->asset_number ?></td>
+                      <td><?= "Rp ".number_format($a->value_price,2,',','.'); ?></td>
+                      <td><?= $a->condition ?></td>
+                    </tr>
+                    <?php } ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <?php foreach ($get as $a){ ?>
+                  <a class="btn btn-warning" href="<?= base_url('Distribution/pdf/'.$a->id)?>" target="_blank"> <i class="fa fa-print"></i> Print </a>
+                <?php } ?>
+              </div>
+            </div>
+
           </div>
-        </div>
 
-	    <!-- recepient -->
-        <div class="form-group row">
-        <label for="recepient" class="col-sm-2 col-form-label">Recepient</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="recepient" name="recepient" value="<?= $d->recepient?>">
-        </div>
-        </div>
-
-        <!-- giver -->
-        <div class="form-group row">
-        <label for="giver" class="col-sm-2 col-form-label">Giver</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="giver" name="giver" value="<?= $d->giver?>">
-        </div>
-        </div>
-
-        <!-- date -->
-        <div class="form-group row">
-        <label for="date" class="col-sm-2 col-form-label">Date</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="date" name="date" value="<?= $d->date?>">
-        </div>
-        </div>
-
-        <!-- item -->
-        <div class="form-group row">
-          <label for="item" class="col-sm-2 col-form-label">Item</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" name="item" id="item" value="<?= $d->jenis.' | '.$d->merek?>">
-          </div>
-        </div>
-
-        <!-- serial number -->
-        <div class="form-group row">
-        <label for="serialnumber" class="col-sm-2 col-form-label">Serial Number</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="serialnumber" name="serialnumber" value="<?= $d->serial_number?>">
-        </div>
-        </div>
-
-        <!-- asset number -->
-        <div class="form-group row">
-        <label for="assetnumber" class="col-sm-2 col-form-label">Asset Number</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="assetnumber" name="assetnumber" value="<?= $d->asset_number?>">
-        </div>
-        </div>
-
-        <!-- value price -->
-        <div class="form-group row">
-        <label for="valueprice" class="col-sm-2 col-form-label">Value Price</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="valueprice" name="valueprice" value="<?= "Rp ".number_format($d->value_price,2,',','.');?>">
-        </div>
-        </div>
-
-        <!-- quantity -->
-        <div class="form-group row">
-        <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="quantity" name="quantity" value="<?= $d->quantity?>">
-        </div>
-        </div>
-
-		<!-- status -->
-        <div class="form-group row">
-        <label for="status" class="col-sm-2 col-form-label">Status</label>
-        <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" id="status" name="status" value="<?= $d->status?>">
-        </div>
-        </div>
-
-      <!-- description -->
-        <div class="form-group row">
-        <label for="description" class="col-sm-2 col-form-label">Description</label>
-        <div class="col-sm-10">
-        <textarea readonly class="form-control-plaintext" id="description" rows="3" name="description"><?= $d->deskripsi?>
-        </textarea>
-        </div>
-        </div> 
-        
-      <!-- button back-->
-        <a href="<?= base_url('Procurement/index')?>" role="button">
-        <button type="button" value="submit" class="btn btn-danger"> 
-        Back
-      </button>
-      </a>
-
-      </form>
-      <?php } ?>
-
-      <hr>
-      
       </div>
         <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
 
+      <?php $this->load->view('partial/script'); ?>
+      <?php $this->load->view('partial/footer'); ?>
 
+    </div>
+  </div>
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="<?= base_url('assets'); ?>/vendor/jquery/jquery.min.js"></script>
-  <script src="<?= base_url('assets'); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="<?= base_url('assets'); ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="<?= base_url('assets'); ?>/js/sb-admin-2.min.js"></script>
 
 </body>
 
 </html>
-
-<script>
-$(document).ready(function(){
-  $("#posSearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#posTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
-
-<script>
-$(document).ready(function() {
-    var text_max = 15;
-    // $('#ticket_feedback').html(text_max + ' characters remaining');
-
-    $('#ticket').keyup(function() {
-        var text_length = $('#ticket').val().length;
-        // var text_remaining = text_max - text_length;
-
-        // $('#ticket_feedback').html(text_remaining + ' characters remaining');
-    });
-});
-</script>
-
-<script>
-function ShowHideDiv() {
-        var chkYes = document.getElementById("customRadio5");
-        var dvtext = document.getElementById("dvtext");
-        dvtext.style.display = chkYes.checked ? "block" : "none";
-    }
-</script>

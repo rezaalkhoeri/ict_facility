@@ -57,7 +57,7 @@ $this->load->view('partial/head');
                     <td style="text-align: left;"><?= $a->requestor ?></td>
                   </tr>
                   <tr>
-                    <td style="text-align: left;">Tanggal</td>
+                    <td style="text-align: left;">Date</td>
                     <td style="text-align: center;">:</td>
                     <td style="text-align: left;"><?= $a->date ?></td>
                   </tr>
@@ -79,12 +79,12 @@ $this->load->view('partial/head');
                   <thead>
                     <tr>
                       <th class="header">No. <i class="fa fa-sort"></i></th>
-                      <th class="header">Jenis <i class="fa fa-sort"></i></th>
-                      <th class="header">Merek <i class="fa fa-sort"></i></th>
+                      <th class="header">Type <i class="fa fa-sort"></i></th>
+                      <th class="header">Brand <i class="fa fa-sort"></i></th>
                       <th class="header">Serial Number <i class="fa fa-sort"></i></th>
                       <th class="header">Asset Number <i class="fa fa-sort"></i></th>
-                      <th class="header">Harga <i class="fa fa-sort"></i></th>
-                      <th class="header">Kondisi <i class="fa fa-sort"></i></th>
+                      <th class="header">Value Price <i class="fa fa-sort"></i></th>
+                      <th class="header">Condition <i class="fa fa-sort"></i></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -98,7 +98,7 @@ $this->load->view('partial/head');
                       <td><?= $a->merek ?></td>
                       <td><?= $a->serial_number ?></td>
                       <td><?= $a->asset_number ?></td>
-                      <td><?= $a->value_price ?></td>
+                      <td><?= "Rp ".number_format($a->value_price,2,',','.'); ?></td>
                       <td><?= $a->condition ?></td>
                     </tr>
                     <?php } ?>
@@ -109,7 +109,7 @@ $this->load->view('partial/head');
             <div class="card-body">
               <div class="form-group">
                 <?php foreach ($get as $a){ ?>
-                  <a class="btn btn-warning" href="<?= base_url('Requisition/pdf/'.$a->id)?>" target="_blank"> <i class="fa fa-print"></i> Cetak Surat Pengajuan </a>
+                  <a class="btn btn-warning" href="<?= base_url('Requisition/pdf/'.$a->id)?>" target="_blank"> <i class="fa fa-print"></i> Print </a>
                 <?php } ?>
               </div>
             </div>
