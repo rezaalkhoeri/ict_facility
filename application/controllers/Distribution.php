@@ -123,8 +123,8 @@ class Distribution extends CI_Controller{
 
     function pdf($id){
       $data['tanggal'] = tanggal();
-      $data['get'] = $this->m_data->join_table_distribution()->result();
-      $data['item_detail'] = $this->m_data->join_table_detail_distribution($id)->result();
+      $data['get'] = $this->m_data->join_table_detail_distribution($id)->result();
+      $data['item_detail'] = $this->m_data->join_table_detail_distribution_item($id)->result();
 
       $this->load->library('pdf');
 

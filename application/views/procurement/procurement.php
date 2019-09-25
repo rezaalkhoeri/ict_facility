@@ -81,7 +81,7 @@ $this->load->view('partial/head');
                         if ($a->status == 1){
                               echo "<a href='update_item/".$a->id."' class='badge badge-primary  btn-xs'><span class='fa fa-edit'></span></a>";
                         } ?>
-  
+
                         <a href="details/<?php echo $a->id ?>" class="badge badge-primary btn-xs"><span class="fa fa-eye"></span></a>
                         <a href="approve/<?php echo $a->id ?>" class="badge badge-success btn-xs"><span class="fa fa-check"></span></a>
                         <a href="decline/<?php echo $a->id ?>" class="badge badge-danger btn-xs"><span class="fa fa-times"></span></a>

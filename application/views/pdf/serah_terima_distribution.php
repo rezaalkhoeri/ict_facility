@@ -8,63 +8,169 @@
     <title>Document</title>
 </head>
 <body style="margin:20px;">
-  <div style="background-color: white; border: 1px #1780dd solid; padding: 10px; text-align: left;">
-  <div style="text-align: center;">
-  <b>BERITA ACARA SERAH TERIMA BARANG</b></div>
-  <br>
-  <br>
-  Kami yang bertanda tangan dibawah ini, &nbsp;Pada tanggal <?php echo $tanggal; ?><br>
-  Nama &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: ___________________________________<br>
-  Jabatan &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : ___________________________________<br>
-  Alamat &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : ___________________________________<br>
-  Selanjutnya disebut PIHAK PERTAMA<br>
-  <br>
-  Nama &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: ___________________________________<br>
-  Jabatan &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : ___________________________________<br>
-  Alamat &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : ___________________________________<br>
-  Selanjutnya disebut PIHAK KEDUA<br>
-  <br>
-  PIHAK PERTAMA menyerahkan barang kepada PIHAK KEDUA, dan PIHAK KEDUA menyatakan telah menerima barang dari PIHAK PERTAMA berupa daftar terlampir :<br>
-  <br>
-  <center>
-  <table border="1" cellpadding="0" cellspacing="0" class="MsoTableGrid" style="border-collapse: collapse; border: none;">
-   <tbody>
-  <tr style="height: 11.7pt;">
-    <td style="border: solid black 1.0pt; height: 11.7pt; padding: 0in 5.4pt 0in 5.4pt; width: 36.9pt;" valign="top" width="49"><div align="center" class="MsoNormal" style="line-height: normal; margin-bottom: 0.0001pt; margin-bottom: 0in; text-align: center;">
-  No.</div>
-  </td>
-    <td style="border-left: none; border: solid black 1.0pt; height: 11.7pt; padding: 0in 5.4pt 0in 5.4pt; width: 2.0in;" valign="top" width="192"><div align="center" class="MsoNormal" style="line-height: normal; margin-bottom: 0.0001pt; margin-bottom: 0in; text-align: center;">
-  Nama Barang</div>
-  </td>
-    <td style="border-left: none; border: solid black 1.0pt; height: 11.7pt; padding: 0in 5.4pt 0in 5.4pt; width: 1.0in;" valign="top" width="96"><div align="center" class="MsoNormal" style="line-height: normal; margin-bottom: 0.0001pt; margin-bottom: 0in; text-align: center;">
-  Jumlah</div>
-  </td>
-   </tr>
-  <tr style="height: 22.35pt;">
-    <td style="border-top: none; border: solid black 1.0pt; height: 22.35pt; padding: 0in 5.4pt 0in 5.4pt; width: 36.9pt;" valign="top" width="49"><div align="center" class="MsoNormal" style="line-height: 115%; margin-bottom: 0.0001pt; margin-bottom: 0in; text-align: center;">
-  1</div>
-  </td>
-    <td style="border-bottom: solid black 1.0pt; border-left: none; border-right: solid black 1.0pt; border-top: none; height: 22.35pt; padding: 0in 5.4pt 0in 5.4pt; width: 2.0in;" valign="top" width="192"><div align="center" class="MsoNormal" style="line-height: 115%; margin-bottom: 0.0001pt; margin-bottom: 0in; text-align: center;">
-  Laptop Toshiba Satellite C600</div>
-  </td>
-    <td style="border-bottom: solid black 1.0pt; border-left: none; border-right: solid black 1.0pt; border-top: none; height: 22.35pt; padding: 0in 5.4pt 0in 5.4pt; width: 1.0in;" valign="top" width="96"><div align="center" class="MsoNormal" style="line-height: 115%; margin-bottom: 0.0001pt; margin-bottom: 0in; text-align: center;">
-  1 Unit</div>
-  </td>
-   </tr>
-  </tbody></table>
-  </center>
-  <br>
-  <div style="text-align: justify;">
-  Demikianlah berita acara serah terima barang ini di perbuat oleh kedua belah pihak, adapun barang-barang tersebut dalam keadaan baik dan cukup, sejak penandatanganan berita acara ini, maka barang tersebut, menjadi tanggung jawab PIHAK KEDUA, memlihara / merawat dengan baik serta dipergunakan untuk keperluan (tempat dimana barang itu dibutuhkan).</div>
-  <br>
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Yang Menyerahkan : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Yang Menerima :
-  <br>
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;PIHAK PERTAMA &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;PIHAK KEDUA<br>
-  <br>
-  <br>
-  <br>
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(………………………..) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (………………………..) &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-  <br>
-  <br></div>
+    <table width="450" border="0" cellpadding="2" cellspacing="0" align="center">
+      <tr colspan="4">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><p style="text-align: right;">Jakarta, <?php echo $tanggal; ?></p></td>
+      </tr>
+      <tr colspan="4">
+        <td>Lampiran</td>
+        <td>:</td>
+        <td>-</td>
+        <td></td>
+      </tr>
+      <tr colspan="4">
+        <td>Perihal</td>
+        <td>:</td>
+        <td>Berita Acara Serah Terima Barang</td>
+        <td></td>
+      </tr>
+    </table>
+    <table style="margin-top:10px" width="450" border="0" cellpadding="2" cellspacing="0" align="center">
+      <tr>
+        <td>Kepada Yth.</td>
+      </tr>
+      <tr>
+        <td>Manager ICT</td>
+      </tr>
+      <tr>
+        <td>PT. Pertamina Drilling Services Indonesia</td>
+      </tr>
+    </table>
+    <table style="margin-top:20px" width="450" border="0" cellpadding="2" cellspacing="0" align="center">
+      <tr>
+        <td>Kami yang bertanda tangan dibawah ini, &nbsp;Pada tanggal <?php echo $tanggal; ?></td>
+      </tr>
+    </table>
+    <?php foreach ($get as $a) { ?>
+    <table style="margin-top:0px" width="450" border="0" cellpadding="2" cellspacing="0" align="center">
+      <tr>
+        <td>Nama</td>
+        <td>:</td>
+        <td><?php echo $a->giver ?></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Jabatan</td>
+        <td>:</td>
+        <td>___________________________________</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Departmen</td>
+        <td>:</td>
+        <td>___________________________________</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="4">  Selanjutnya disebut PIHAK PERTAMA</td>
+      </tr>
+    </table>
+    <table style="margin-top:10px" width="450" border="0" cellpadding="2" cellspacing="0" align="center">
+      <tr>
+        <td>Nama</td>
+        <td>:</td>
+        <td><?php echo $a->recipient ?></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Jabatan</td>
+        <td>:</td>
+        <td>___________________________________</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Departmen</td>
+        <td>:</td>
+        <td>___________________________________</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="4">  Selanjutnya disebut PIHAK KEDUA</td>
+      </tr>
+    </table>
+    <?php } ?>
+
+    <table style="margin-top:20px" width="450" border="0" cellpadding="2" cellspacing="0" align="center">
+      <tr>
+        <p style="text-align:justify;">
+          <td>PIHAK PERTAMA menyerahkan barang kepada PIHAK KEDUA, dan PIHAK KEDUA menyatakan telah menerima barang dari PIHAK PERTAMA berupa daftar terlampir :</td>
+        </p>
+      </tr>
+    </table>
+
+    <table style="margin-top:20px" width="450" border="1" cellpadding="2" cellspacing="0" align="center">
+      <tr align="center">
+        <th class="header">No. </th>
+        <th class="header">Jenis </th>
+        <th class="header">Merek </th>
+        <th class="header">Asset Number </th>
+        <th class="header">Serial Number </th>
+        <th class="header">Kondisi </th>
+      </tr>
+      <?php
+          $no = 1;
+          foreach ($item_detail as $a){
+      ?>
+      <tr align="center">
+        <td><?= $no++ ?></td>
+        <td><?php echo $a->jenis; ?></td>
+        <td><?php echo $a->merek; ?></td>
+        <td><?php echo $a->asset_number; ?></td>
+        <td><?php echo $a->serial_number; ?></td>
+        <td><?php echo $a->condition; ?></td>
+      </tr>
+      <?php } ?>
+    </table>
+
+    <table style="margin-top:20px" width="450" border="0" cellpadding="0" cellspacing="0" align="center">
+      <tr>
+        <td>
+          <p style="text-align:justify;">
+          Demikianlah berita acara serah terima barang ini di perbuat oleh kedua belah pihak, adapun barang-barang tersebut dalam keadaan baik dan cukup, sejak penandatanganan berita acara ini, maka barang tersebut, menjadi tanggung jawab PIHAK KEDUA, memlihara / merawat dengan baik serta dipergunakan untuk keperluan (tempat dimana barang itu dibutuhkan).
+          </p>
+        </td>
+      </tr>
+    </table>
+
+    <table style="margin-top:40px" width="450" border="0" cellpadding="0" cellspacing="0" align="center">
+      <tr>
+        <td style="text-align:center">PIHAK PERTAMA</td>
+        <td style="text-align:center" width="150px"><br></td>
+        <td style="text-align:center">PIHAK KEDUA</td>
+      </tr>
+      <tr>
+        <td style="text-align:center">Yang Menyerahkan</td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center">Yang Menerima</td>
+      </tr>
+      <tr>
+        <td style="text-align:center"><br></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+      </tr>
+      <tr>
+        <td style="text-align:center"><br></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+      </tr>
+      <tr>
+        <td style="text-align:center"><br></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+      </tr>
+      <tr>
+        <td style="text-align:center"><br></td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center"></td>
+      </tr>
+      <tr>
+        <td style="text-align:center">(.............................................)</td>
+        <td style="text-align:center"></td>
+        <td style="text-align:center">(.............................................)</td>
+      </tr>
+    </table>
 </body>
 </html>

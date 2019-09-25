@@ -32,7 +32,7 @@ $this->load->view('partial/head');
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Detail Procurement</h6>
             </div>
-            <?php 
+            <?php
             foreach($get as $a){
               ?>
             <form action="<?= base_url('Procurement/update_item_action/'.$a->id)?>" method="post" name="my_form">
@@ -56,7 +56,8 @@ $this->load->view('partial/head');
                     ?>
                     <tr>
                       <td>
-                      <?= $no++ ?> 
+                      <?= $no++ ?>
+                      <input type="hidden" value="<?= $a->id_detail_item ?>" class="form-control" id="id_detail_item" name="id_detail_item[]" required>
                       <input type="hidden" value="<?= $a->id_item ?>" class="form-control" id="id_item" name="id_item[]" required>
                       </td>
                       <td><?= $a->jenis ?></td>

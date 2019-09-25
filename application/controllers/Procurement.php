@@ -41,13 +41,22 @@ class Procurement extends CI_Controller{
 
     function update_item_action($id){
       $itemID = $this->input->post('id_item');
+      $item_detail = $this->input->post('id_detail_item');
       $serialnumber = $this->input->post('serialnumber');
       $assetnumber = $this->input->post('assetnumber');
 
+      $item = array();
+      for ($i=0; $i < count($itemID) ; $i++) {
+        array_push($item, array(
+          'id' => $itemID[$i],
+          'status' => 1
+        ));
+      }
+
       $detailItem = array();
-        for ($i=0; $i < count($serialnumber) ; $i++) {
+        for ($i=0; $i < count($item_detail) ; $i++) {
           array_push($detailItem, array(
-            'id' => $itemID[$i],
+            'id' => $item_detail[$i],
             'serial_number' => $serialnumber[$i],
             'asset_number' => $assetnumber[$i],
             'status' => 1
@@ -58,8 +67,8 @@ class Procurement extends CI_Controller{
       $data = array('status' => 3);
 
       // echo '<pre>',print_r($detailItem),'</pre>';
-    // die;
-
+      // die;
+      $this->m_data->multiple_update('tb_item', $item,'id');
       $this->m_data->multiple_update('tb_detail_item', $detailItem,'id');
       $this->m_data->update_data($where, $data, 'tb_tr_procurement');
       redirect('Procurement/index');
@@ -80,6 +89,9 @@ class Procurement extends CI_Controller{
         $description = $this->input->post('description');
         $paymentmethod = $this->input->post('paymentmethod');
         $date = $this->input->post('date');
+
+        $timestamp = strtotime($date);
+        $acttualDate = date("Y-m-d", $timestamp);
 
         $tiket = array(
           'no_tiket' => $tiket,
@@ -146,7 +158,7 @@ class Procurement extends CI_Controller{
           'transactionCode' => $kode,
           'payment_method' => $paymentmethod,
           'deskripsi' => $description,
-          'date' => $date,
+          'date' => $acttualDate,
           'status' => 0
         );
 
